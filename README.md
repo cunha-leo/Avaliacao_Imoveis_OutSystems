@@ -11,14 +11,14 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 
 ## Documentação da 1ª Parte
 
-* Entendendo o projeto atraves do template
-* Criando o projeto em dois modulos Web e Services
+* Entendendo o projeto através do template
+* Criando o projeto em dois módulos Web e Services
 * Entendendo a separação de responsabilidades
 * Criando a arquitetura do banco de dados
 
 ### Mockups e Template das Telas
 
-Antes de começar a implementação, iniciamos com entendimento dos mockup das telas utilizando o **Drawio** e a importancia de ter uma template visual e os beneficios que pode trazer.
+Antes de começar a implementação, iniciamos com entendimento dos mockup das telas utilizando o **Drawio** e a importância de ter uma template visual e os benefícios que pode trazer.
 
 Esse planejamento visual ajudou a garantir que todos os elementos fossem claramente definidos antes da implementação e trazendo clareza da aplicabilidade.
 
@@ -124,16 +124,16 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 
 #### 4 Variáveis Locais
 
-* **Username**: Consumida no Input "E-mail"
+* **Username**: Consumida no Input **E-mail**
   ![Var Username](./Assets/Parte%202/img/Tela%20Login/Var_Username.png)
 
-* **Password**: Consumida no Input "Senha"
+* **Password**: Consumida no Input **Senha**
   ![Var Password](./Assets/Parte%202/img/Tela%20Login/Var_Password.png)
 
-* **IsExecuting**: Utilizada para informar execução de algo na ClientAction "OnInitialize"
+* **IsExecuting**: Utilizada para informar execução de algo na ClientAction **OnInitialize**
   ![Var IsExecuting](./Assets/Parte%202/img/Tela%20Login/Var_IsExecuting.png)
 
-* **Remember**: Consumida no Input de Checkbox "Lembrar-me"
+* **Remember**: Consumida no Input de Checkbox **Lembrar-me**
   ![Var Remember](./Assets/Parte%202/img/Tela%20Login/Var_Remember.png)
 
 #### 3 Client Actions
@@ -141,13 +141,13 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 * **ForgotPassword**: Para recuperar a senha
   ![ForgotPassword](./Assets/Parte%202/img/Tela%20Login/Client%20Action%20Login/ForgotPassword.png)
 
-* **Login**: Usado no botão "Entrar"
+* **Login**: Usado no botão **Entrar**
   ![Login](./Assets/Parte%202/img/Tela%20Login/Client%20Action%20Login/Login.png)
 
   * A lógica Login recebendo o **Variavel local IsExecuting** como True, que será após clicar no botão
     ![IsExecuting](./Assets/Parte%202/img/Tela%20Login/Client%20Action%20Login/Logic-Login-IsExecuting.png)
 
-  * Após, irá para a ServerAction "DoLogin", que é a ServerAction de Login
+  * Após, irá para a ServerAction **DoLogin**, que é a ServerAction de Login
     * Que receberá as variáveis locais: Username, Password, Remember
     * A ServerAction é chamada para persistir meus dados no banco de dados e saber se realmente salvou no banco de dados
     * E chamar a ServerAction padrão de Login da OutSystems dentro de User
@@ -204,7 +204,7 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela02.png)
 
   * **ImmobileDetail**: Que é a de registro
-    * Retiramos o IF que vem por padrão, que mostra se "true" Cadastrar ou "else" Editar, e colocamos no lugar uma **Expression**, que tem a seguinte validação:
+    * Retiramos o **IF** que vem por padrão, que mostra se **true** Cadastrar ou **else** Editar, e colocamos no lugar uma **Expression**, que tem a seguinte validação:
       * SE o ImmobileId for igual a vazio ou se ele não existe, Cadastrar, se não, Editar e concatenar com Imóvel.
 
       ```Js
@@ -226,7 +226,7 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
       * Alteramos também o lado dos botões
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela07.png)
 
-    * Verificando a **ClientAction** "**SaveDetail**" da tela **ImmobileDetail** se os dados estão persistindo corretamente
+    * Verificando a **ClientAction** **SaveDetail** da tela **ImmobileDetail** se os dados estão persistindo corretamente
       ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client%20Action%20Cadastro%20Imoveis/SaveDetail.png)
 
       * Aqui ainda não está fazendo a persistência dos dados
