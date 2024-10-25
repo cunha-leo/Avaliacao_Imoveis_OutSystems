@@ -55,6 +55,12 @@ O projeto foi dividido em dois módulos principais:
 1. **Módulo AAR\_Services (Service)**:
    * Responsável pela lógica de backend, incluindo a arquitetura do banco de dados, os relacionamentos e as ações CRUD.
 
+   * O módulo foi configurado para ser **público**, permitindo que outros módulos acessem suas funcionalidades como leitura.
+
+   * A arquitetura de entidades foi projetada para ser clara e garantir a integridade dos dados. O diagrama de entidade (ER) criei para facilitar a minha visualização, segue o mesmo é uma previa de cada tabela, abaixo:
+
+     ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
+
    * **Criamos o diagrama ER**:
      ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
 
@@ -78,30 +84,12 @@ O projeto foi dividido em dois módulos principais:
    * **Tabela User**: Utiliza a entidade padrão do sistema OutSystems para armazenar informações dos usuários, como data de criação e última alteração.
      ![Tabela User](./Assets/Parte%201/img/Data/Table/ER_User.png)
 
-2. **Módulo AAR\_Services**:
+2. **Módulo AAR\_WEB**:
    * Responsável pelo front-end e pelas telas da aplicação.
 
-   * O módulo **AAR\_Services** foi adicionado como dependência, mas somente como leitura, para garantir a segurança e centralizar toda a lógica de servidor.
+   * Foi adicionado como dependência ao **AAR\_WEB**, como leitura, para garantir a segurança e centralizar toda a lógica de servidor no módulo **AAR\_Services**.
 
    * No módulo web/reactive, podemos observar as abas completas, incluindo **Triggers, Interface, Logic, e Data**.  
-
-     ![Estrutura do Módulo AAR_WEB](./Assets/Parte%201/img/Model/estrutura-aar-services.png)
-
-### Configuração dos Módulos
-
-1. **Módulo AAR\_Services**:
-
-   * Contém todas as ações CRUD e a lógica de backend. O módulo foi configurado para ser **público**, permitindo que outros módulos acessem suas funcionalidades.
-
-   * A arquitetura de entidades foi projetada para ser clara e garantir a integridade dos dados. O diagrama de entidade (ER) criado para facilitar a visualização é mostrado abaixo:
-
-     ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
-
-2. **Módulo AAR\_WEB**:
-
-   * Concentra todas as telas e componentes de interface. Utiliza a base de dados do módulo **AAR\_Services** somente em modo de leitura, para garantir a segurança e a centralização da lógica.
-
-   * Estruturas como **MainFlow** e layouts de tela foram organizados para facilitar o desenvolvimento posterior. Verifique a estrutura do módulo AAR\_WEB abaixo:
 
      ![Estrutura do Módulo AAR_WEB](./Assets/Parte%201/img/Model/estrutura-aar-web.png)
 
@@ -147,16 +135,16 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
   * A lógica Login recebendo o **Variavel local IsExecuting** como True, que será após clicar no botão
     ![IsExecuting](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-IsExecuting.png)
 
-  * Após, irá para a ServerAction **DoLogin**, que é a ServerAction de Login
+  * Após, segui para a ServerAction **DoLogin**, que é a ServerAction usada no Login
     * Que receberá as variáveis locais: Username, Password, Remember
-    * A ServerAction é chamada para persistir meus dados no banco de dados e saber se realmente salvou no banco de dados
+    * A ServerAction é chamada para persistir os dados e saber se realmente salvou no banco de dados
     * E chamar a ServerAction padrão de Login da OutSystems dentro de User
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin.png)
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin01.png)
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin02.png)
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin03.png)
 
-  * Após, irá **remover** uma mensagem de feedback após Login
+  * Após, irá **remover** uma mensagem de feedback ao Logar
     * Ou seja, será removida qualquer possível mensagem que apareça após realizar o login.
 
   * Após, **redirecionará**
@@ -357,7 +345,7 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 ### Módulo: ARR_WEB
 
 * Começando a retirar o que não vamos usar
-  * Neste caso, excluímos a tabela **GetUsers**
+  * Neste caso, excluímos o Aggregate **GetUsers**
     ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate27.png)
     ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate28.png)
 
