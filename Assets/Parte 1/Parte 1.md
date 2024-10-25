@@ -46,27 +46,27 @@ O projeto foi dividido em dois módulos principais:
    - Responsável pela lógica de backend, incluindo a arquitetura do banco de dados, os relacionamentos e as ações CRUD.
 
    - **Criamos o diagrama ER**:
-     ![Diagrama ER](../Parte%201/img/ER/ER01.png)
+     ![Diagrama ER](../Parte%201/img/Data/ER/ER01.png)
 
    **Tabelas Criadas**:
 
    - **Tabela Immobile**: Contém os dados dos imóveis cadastrados, como CEP, endereço, cidade, proprietário, entre outros.
-     ![Diagrama ER](../Parte%201/img/Tabelas/ER_Immobile.png)
+     ![Diagrama ER](../Parte%201/img/Data/Table/ER_Immobile.png)
 
    - **Tabela Rating**: Armazena as avaliações dos imóveis, incluindo informações como tempo de locação, recomendações e observações dos usuários.
-     ![Diagrama ER](../Parte%201/img/Tabelas/ER_Rating.png)
+     ![Diagrama ER](../Parte%201/img/Data/Table/ER_Rating.png)
   
    - **Tabela TypeExperience**: Armazena os tipos de experiência relacionados aos imóveis. Possui registros como **Excelente, Bom, Neutro, Ruim, Péssimo**.
-     ![Tabela TypeExperience](../Parte%201/img/Tabelas/ER_TypeExperience.png)
+     ![Tabela TypeExperience](../Parte%201/img/Data/Table/ER_TypeExperience.png)
 
    - **Tabela TypeImmobile**: Armazena os tipos de imóvel disponíveis (ex.: Casa, Apartamento, Loja). Possui registros como **Casa, Apartamento, Loja**.
-     ![Tabela TypeImmobile](../Parte%201/img/Tabelas/ER_TypeImmobile.png)
+     ![Tabela TypeImmobile](../Parte%201/img/Data/Table/ER_TypeImmobile.png)
 
    - **Tabela UserxImmobile**: Relaciona usuários aos imóveis, indicando propriedades e ocupação. São tabelas auxiliares que armazenam os tipos de experiência, tipos de imóvel, e a relação entre usuários e imóveis.
-     ![Tabela UserxImmobile](../Parte%201/img/Tabelas/ER_UserxImmobile.png)
+     ![Tabela UserxImmobile](../Parte%201/img/Data/Table/ER_UserxImmobile.png)
 
    - **Tabela User**: Utiliza a entidade padrão do sistema OutSystems para armazenar informações dos usuários, como data de criação e última alteração.
-     ![Tabela User](../Parte%201/img/Tabelas/ER_User.png)
+     ![Tabela User](../Parte%201/img/Data/Table/ER_User.png)
 
 2. **Módulo AAR\_Services**:
    - Responsável pelo front-end e pelas telas da aplicação.
@@ -75,7 +75,7 @@ O projeto foi dividido em dois módulos principais:
 
    - No módulo web/reactive, podemos observar as abas completas, incluindo **Triggers, Interface, Logic, e Data**.  
 
-     ![Estrutura do Módulo AAR_WEB](../Parte%201/img/Modulos/estrutura-aar-services.png)
+     ![Estrutura do Módulo AAR_WEB](../Parte%201/img/Model/estrutura-aar-services.png)
 
 ### Configuração dos Módulos
 
@@ -85,7 +85,7 @@ O projeto foi dividido em dois módulos principais:
 
    - A arquitetura de entidades foi projetada para ser clara e garantir a integridade dos dados. O diagrama de entidade (ER) criado para facilitar a visualização é mostrado abaixo:
 
-     ![Diagrama ER](../Parte%201/img/ER/ER01.png)
+     ![Diagrama ER](../Parte%201/img/Data/ER/ER01.png)
 
 2. **Módulo AAR\_WEB**:
 
@@ -93,7 +93,7 @@ O projeto foi dividido em dois módulos principais:
 
    - Estruturas como **MainFlow** e layouts de tela foram organizados para facilitar o desenvolvimento posterior. Verifique a estrutura do módulo AAR\_WEB abaixo:
 
-     ![Estrutura do Módulo AAR_WEB](../Parte%201/img/Modulos/estrutura-aar-web.png)
+     ![Estrutura do Módulo AAR_WEB](../Parte%201/img/Model/estrutura-aar-web.png)
 
 ### Conclusão
 
