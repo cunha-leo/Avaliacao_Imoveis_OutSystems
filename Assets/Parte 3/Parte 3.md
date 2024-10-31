@@ -171,5 +171,53 @@
 ## Tela Meus Imóveis
 
 - Tela de Listagem de Imóveis
+  - Iniciando assim, vamos reaproveitar a mesma para criar a tela de listagem de imóveis
 
-# EM CRIAÇÃO ..... EM BREVE
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis01.png)
+
+- Realizando a alteraçõa inicial mais proximo do nosso template
+  - **1º** Alteramos o nome da página
+  - **2º** Retiramos o link de Casa pois será no logradouro para edição
+  - **3º** Editamos as posições das colunas
+  - **4º** Renomeamos o botão de criação para **Cadastrar Imóvel**
+  - **5º** Adiconamos o link de edição na coluna **Logradouro**
+  - **6º** Adiconamos a coluna de **Ação** com ícone de **Delete**
+  - **7º** Adiconamos a coluna de **Cadastro**
+
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis02.png)
+
+- configurar as **Expressions** para receber os valores das colunas.
+  - **1º** **Avaliações** - Recebe o valor do atributo correto
+    - A ideia dessa coluna e realizar a somatoria de avaliações do endereço especifico.
+    - Então terei que alterar meu Get(Aggregate) para realizar essa soma.
+    - Começando a alterar o **GetImoveis**(Aggregate)
+      - Criando um join para chamar a tabela avaliações
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis03.png)
+      - Foi feito o Join e já está relacionado
+        - Ao apertar **Source** e escolher a tabela já é feita a relação de tabelas
+        - Uma coisa importantes a relação de ligação está como **With or without** que significa que ele buscara tanta os registros de que tenha **Avaliação** e o que não tem.
+        - **With or without** Busca ambos registros com ou sem
+        - **With** Busca registro preenchidos
+        - **Only With** Busca apenas os registros que tenham a avaliação
+
+        - Para realizar a avaliação lá na frente e verificar corretamente os dados da nossa listagem com a avaliação sem repetir registros realizamos o **group by** e o **count**
+        - **Group by** agrupamos os dados de CEP, Id:Imomoble, Street, Street_Number, CreatedAt,Label:TypeMobile, AccessKey
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis06.png)
+        - **Count** é para contar a quantidade de registros agrupados
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis05.png)
+        - Olha que interessante uma vez que eu realizei o agrupamento e o count ele agora deixou de olhar para toda a estrutura e nosso Get agora mostra apenas os campos agrupados.
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis08.png)
+        - Também retiramos a reordenação de cada coluna
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis09.png)
+        - Agora vamos abrir as expresison e substituir pelos valores do novo Get os cmapos dos agrupamentos
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis10.png)
+        - **Até o momento ficou assim**
+      ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis11.png)
+- Conseguimos finalizar a primeira parte dessa tela agora vamos realizar alguns ajustes:
+  - **1º** Vamos ajustar a formatação do **Criado em** com a função da OutSystems **DateFormate()**
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis12.png)
+  - **2º** Vamos ajustar a ação do nosso **Search**
+    - Ocorreu que o campo d ebusca nao estava retornando os registro como veio criado, porque estava apenas pegando o CEP, como temos ainda somente dois registros  de CEP, vamos alterar para pegar o CEP e o Logradouro
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis13.png)
+
+## EM CRIAÇÃO ..... EM BREVE
