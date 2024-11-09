@@ -217,7 +217,84 @@
   - **1º** Vamos ajustar a formatação do **Criado em** com a função da OutSystems **DateFormate()**
   ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis12.png)
   - **2º** Vamos ajustar a ação do nosso **Search**
-    - Ocorreu que o campo d ebusca nao estava retornando os registro como veio criado, porque estava apenas pegando o CEP, como temos ainda somente dois registros  de CEP, vamos alterar para pegar o CEP e o Logradouro
+    - Ocorreu que o campo de busca nao estava retornando os registro como veio criado, porque estava apenas pegando o CEP, como temos ainda somente dois registros  de CEP, vamos alterar para pegar o CEP e o Logradouro
   ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis13.png)
 
-## EM CRIAÇÃO ..... EM BREVE
+- Criando a Ação **DELETE**
+  - 1º Criamos uma *ClientAction* no modulo **ARR_WEB** vazia por enquanto
+  - 2º Vamos criar a **ServerAction** no modulo **ARR_Server**
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete01.png)
+  - 3º Vou na ABA **Data** acho a ação de Delete da tabela Immobile e arrasto para minha **ServerAction** é adicionio o meu parametro de entrada ID para o Crud de Delete.
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete02.png)
+  - 4º Passo meu **Output** ou seja a saida desse retorno do CRUD.
+    - Ambos os fluxos não passamos o ID nem o AccessKey de Output
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete03.png)
+  - 5º Passo criar o **Fluxo de Exceção**
+    - Nele podemos ver que o nosso fluxo de **TRUE** está ok e nosso **FALSE**
+      - Recebe uma **AllExpetions** que terá um **Asign** de *Output.Succes = True* e *Output.Message = AllExceptions.ExceptionMessage* ou seja caso der erro é informado erro pela **AllExpetions**.
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete05.png)
+  - 6º Voltamos para o Mudulo **AAR_WEB** para agora receber o retorno da **ServerAction**, realizamos o Fluxo onde
+    - 1. Chamamos a **ServerAction immobile_Delete** que passa como parametro o nosso Id.
+    - 2. **SE** a **ServerAction** returnou **TRUE**, Recebera uma mensagem de **SUCESSO** **SE NÃO** recebera uma mensagem de **ERRO**, ambas do nosso retorno do **Output.Message da ServerAction** é após encerrerá.
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete01.png)
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete02.png)
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete03.png)
+  ![Tela de Login](../Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete04.png)
+
+## CRIANDO TELA DE AVALIAÇÕES
+
+- **1º** Para inicar organizamos a Tela de Avaliação com um **List** para ficar ajustado usamos
+  - No Main Content > List > Container > Content\CardsSectioned
+  ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel01.png)
+
+- **2º** Iremos mostrar os Imóveis disponiveis para avaliar, para isso vamos criar um Aggregated para essa tela em especifico.
+  - 1. Fazemos uma relação com a tabela **Immobile** com a **UserXImmobile**
+    - Será a tabela usada para relacionar o usuário com os imoveis que ele já morou e com o **join(With or Whithout)**.
+    - Ou seja trará os dados da *Immobile* mesmo se não haver dados relacionados a *UserxImmobile*
+
+  - 2. Fazemos uma relação com a tabela **Immobile** com a **TypeImmobile**
+    - Neste caso a ligação é **join(Only Whith**) trará de qualquer forma porque não há como cadatsrar um imóvel sem o seu tipo.
+
+  - 3. Fazemos uma relação com **Immobile** com a **Rating**
+    - Para trazer as informações das avaliações, agrupar e contar pelas mesmas.
+    - Usamos o **join(With or Whithout**) também.
+
+  - 4. Realizmos os agrupamentos de informação e a contagem por Id do (Rating).
+    - **Grup By** :
+      - Immobile.Id
+      - Immobile.Street
+      - Immobile.Street_Number
+      - TypeImmobile.Label
+      - Immobile.AccessKey
+    - **Count** :
+      - Rating.Id
+
+    ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel03.png)
+
+- **3º**Agora vamos adicionar o nosso **Aggregat** ao nosso **Source**
+  ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel04.png)
+  - 1. Após adicionamos nosso Source atraves das nossas **Expressions** de acordo com retorno de cada informação como na imagem abaixo.
+  - 2. Também estilizamos um pouco mais nosso **Container** dando um espaçamento de margens e centralização do conteudo.
+  ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel05.png)
+  - 3. Vamos Criar um *Group By* no do *TypeImmobile.Id* para que quando a informação daquele lista for Casa apareça um icone de casa e se for apartamento irá aparecer apartamento.
+  ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel06.png)
+  - 4. Agora vamos criar um **If** para mostrar o icone de acordo com o **TypeImmobile**
+  ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel07.png)
+
+- **4º** Vamos criar um scroll infinito que ao rolar as avaliações el sempre vai carregando mais a cada vez que eu rolar para baixo enquanto tiver imoveis.
+  - 1. Ao selecionar o component **List** ele por padrão possui os campos de tipos de **Envents** selecione o Event **On Scroll Ending** é após selecione a opção **New Infinite Scroll Cliente Action**
+    - Será criado automaticamente uma **Cliente Action** de Scroll
+    ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel08.png)  
+    ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel09.png)
+    - Ele criou uma ação **ScrollEnding** aonde ele está esperando um **número** para incrementar a partir da variável **Incrementrecords** que é se você vai mostrar 5 agora traga mais 2, 3 ... e também criou uma **Variavel Local** -> **MaxRecords** a primeira vez que abrir a tela mostrará a partir de quantos na tela
+    ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel10.png)
+    ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel11.png)
+    ![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel12.png)
+
+## **REVISÃO**
+
+![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel14.png)
+
+## EM CRIAÇÃO ..... EM BREVE PARTE 4
+
+![Tela de Login](../Parte%203/img/Tela%20Avaliações/Avaliar_Imovel13.png)
