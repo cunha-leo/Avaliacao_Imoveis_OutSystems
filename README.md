@@ -2,12 +2,24 @@
 
 Aplicação em OutSystems Reactive de Avaliações de Imóveis
 
-## Índice
+## Índice - PT
 
 * [1ª Parte - Título da Parte 1](#documentação-da-1ª-parte)
 * [2ª Parte - Título da Parte 2](#documentação-da-2ª-parte)
 * [3ª Parte - Título da Parte 3](#documentação-da-3ª-parte)
 * [4ª Parte - Em Construção : Clique aqui](./Assets/Parte%204/Parte%204.md)
+
+## Readme in English - EN
+
+If you are an English reader, visit the link below:
+
+* [Click here docuementation](#click-here-documentation)
+
+## Readme en Español - ES
+
+Si eres un lector en español entra en el seguinte enlace:
+
+* [Haga clic aquí](#clic-aqui-documentation)
 
 -----------------------------------
 
