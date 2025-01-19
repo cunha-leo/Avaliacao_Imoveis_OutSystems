@@ -13,13 +13,13 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 
 If you are an English reader, visit the link below:
 
-* [Click here docuementation](#click-here-documentation)
+* [Click here docuementation](/README-EN.md)
 
 ## Readme en Español - ES
 
 Si eres un lector en español entra en el seguinte enlace:
 
-* [Haga clic aquí](#clic-aqui-documentation)
+* [Haga clic aquí](/README-ES.md)
 
 -----------------------------------
 
