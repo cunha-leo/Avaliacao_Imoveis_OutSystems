@@ -423,9 +423,9 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 
 ### Access Key ARR_SERVICES
 
-* Vamos Iremos iniciar no as alterações no servidor, conforme verifica na imagem abaixo até o momento temos a ServerAction (**Immobile_CreateOrUpdate**) que possui um parametro de entrada que é a propria tabela Immobile e o parametro de saida é o Output (*Success, Message, AccessKey, Id*)
+* Iremos iniciar as alterações no servidor, conforme verificamos na imagem abaixo até o momento temos a ServerAction (**Immobile_CreateOrUpdate**) que possui um parametro de entrada que é a propria tabela Immobile e o parametro de saida é o Output (*Success, Message, AccessKey, Id*)
 
-* Porém o nosso (**CreateImmobile**) no fluxo não está recebendo ainda o **AccesKey**, porque não foi atriuido ainda a nossa tabela.
+* Porém o nosso (**CreateImmobile**) no fluxo não está recebendo ainda o **AccesKey**, porque não foi atribuido ainda a nossa tabela.
 
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey01.png)
 
