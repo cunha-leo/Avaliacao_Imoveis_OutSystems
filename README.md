@@ -518,13 +518,14 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
   ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP04.png)
 
 * 3º Aplicando a lógica:
-  * Add um **IF**, SE CEP > 7, ou seja se ele tiver 8 caracteres ou mais
-    * Vou no meu serviço de **ViaCEP** e ver se eu consigo pegar alguma informação baseado no CEP que ele me passou
-
-    ```Js
+  * Add um **IF**, SE o input CEP > 7, ou seja se ele tiver 8 caracteres ou mais
+  * ```Js
         Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
     ```
+    * SE False ele finaliza, pois tem menos de 8 caracteres
+    * Se True chamo minha API de serviço **ViaCEP** e verifico se eu consigo pegar alguma informação baseado no CEP digitado no Input
 
+  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP05.png)
 
     * SE for satisfeita a condição ele irá chamar o ViaCEP
@@ -537,12 +538,18 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP07.png)
 
     * Agora deve configurar os campos de Input para receber os valores automaticamente do meu serviço ViaCEP
-      * **1º** Preciso validar se ele recebeu as informações desse serviço
+      * **1º** Preciso validar se ele recebeu as informações desse serviço (1º IF)
         * SE Cep > 7 = FALSE (PARA)
         * SE Cep > 7 = TRUE ele chama meu serviço **ViaCEP**
           * onde é esperado como parametro um CEP, neste caso usamos o mesmo da condição (If)
+        ```Js
+        Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
+        ```
         .....
-        * **2º** validamos **O retorno do serviço CEP**
+        * **2º** validamos **O retorno do serviço CEP**  (2º IF)
+        ```Js
+        CEP.Output.Erro = True
+        ```
           * SE o retorno do serviço CEP.Output.Erro = True (PARA)
           * SE o retorno do serviço CEP.Output.Erro = FALSE
             * Ou seja se ele deu erro ele irá chamar o Asign
