@@ -29,7 +29,7 @@
     - 3º Se não for um novo record, ele irá atualizar o registro no nosso **CRUD(UpdateRating)**
       - Como **Source** receberá nossa tabela **Rating**
       - Passaremos Nosso **Output** atraves do **Asign** com:
-        - **Output.Succes** (False)
+        - **Output.Succes** (True)
         - **Output.Message** ("Avaliação atualizada com sucesso")
         - **Output.Id** (Rating.Id) -> O Id da tabela Rating do nosso **Source**
     - 4º Ambos encerram aqui se der Sucesso em criar ou atualizar
@@ -55,7 +55,7 @@
   ![Parte 4](..//Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao10.png)
   *3º* Add a váriavel local **ShowPopupRating** que está setada como Bollean e Default(false), pois queremos que ao entrar nessa página a mesma esteja desativada, somente abrirá quando acionarmos.
   ![Parte 4](..//Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao11.png)
-  *4º* Atribuirmos a vparivel local ao Popup, dessa forma agora o mesmo já recebe a variavel e podemos então criar o fluxo de **ClientAction** para abrir e fechar.
+  *4º* Atribuirmos a varivel local ao Popup, dessa forma agora o mesmo já recebe a variavel e podemos então criar o fluxo de **ClientAction** para abrir e fechar.
   ![Parte 4](..//Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao12.png)
   *5º* Criando o **ClientAction** para abrir e fechar o popup, para fazer esse passo lembra que colocamos a variável como padrão (False), ou seja será ativado a partir do inverso desse default.
   - Vamos criar o **ClientAction** de **OnClick** no Container de **Card de Avaliação**, pois como está dinamico uma vez que eu aplique no container cada card chamará essa ação.
@@ -65,7 +65,7 @@
   - O que explicamos que a variavel esta como default False ou seja o (not) irá realizar o inverso dela que será (True)
   ![Parte 4](..//Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao14.png)
   *6º* Vamos implementar agora o nosso **ModalAvaliacao(Popup)** na tela
-    - Criamos uma váriavel local para receber nossa tabela **Rating** que será usada no **Formulário** após arrastamos para nosso **Widget Tree** para o formulário dentro do popupp, que será as informações que vamos trabalhar.
+    - Criamos uma váriavel local para receber nossa tabela **Rating** que será usada no **Formulário** após arrastamos para nosso **Widget Tree** para o formulário dentro do popup, que será as informações que vamos trabalhar.
    ![Parte 4](..//Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao15.png)
     - Ajustamos nossa estrutura onde **Título e Subtitulo** recebe uma expression que depois vamos colocar para que sempre que for um apartamento ou caso mude e também o icone que vira depois.
     - Ajustamos os campos do formulário, para que fique o de acordo com nosso mockup
