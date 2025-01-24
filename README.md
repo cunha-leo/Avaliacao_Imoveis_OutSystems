@@ -786,29 +786,34 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 	- 3º - Alterando o Título e descrição do popup para retornar se é casa ou apartamento e o endereço, de forma dinâmica antes de persistir nossos dados.
 		- Antes colocamos essas duas expressions como vazia com um dafault de valor padrão
 	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao21.png)
-	- Para deixar dinâmico vamos ter que criar duas variáveis locais "TypeImmobile" e "ImmobileAddress" e atribui-las a nossa ação "ShowPopupRating" através do Asign, essa função é usada para que quando clicarmos em um card ela abrirá com formulário de avaliação com algumas informações setadas.
+	- Para deixar dinâmico vamos ter que criar duas variáveis locais "TypeImmobile" e "ImmobileAddress" e atribui-las a nossa ação "ShowPopupRating" através do Asign,
+   	essa função é usada para que quando clicarmos em um card ela abrirá com formulário de avaliação com algumas informações setadas.
 		- Ambas as variáveis locais devem ser do tipo texto 
 		![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao22.png)
 		- Como vemos na figura abaixo estamos preenchendo o Asign com 4 tipo de informações.
-			- 1º - recebemos o parâmetro de entrada "ShowPopupRating" que abrirá o popup toda vez que for clicada o mesmo se iniciara com valor False e a condição será "not ShowPopupRating".
+			- 1º - recebemos o parâmetro de entrada "ShowPopupRating" que abrirá o popup toda vez que for clicada o mesmo se iniciara com valor
+     			False e a condição será "not ShowPopupRating".
 			- 2º - Atribuímos nossa variável local "TypeImmobile" que é o título do nosso popup que trará se é casa ou apartamento a lógica foi:
 			```Js
-		If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
+			If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
 			```
 			- 3º  - Atribuímos nossa variável local "ImmobileAddress" que é a descrição do nosso popup que trará a rua e o número a lógica do imóvel foi:
-			```Js
-		If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
+	   		```Js
+			If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
 			```
 			- 4º - Pegaremos nossa variável local Rating selecionaremos o nosso ID e receberemos de valor o ID atual que esta sendo clicado.
 			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao24.png)
 			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao25.png)
-		![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao23.png)
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao23.png)
 	- 4º - Persistindo os dados do "Popup" 
-		- Vamos agora criar a lógica para persistir os dados ao clicar no botão "Salvar", através da Client Action "SaveOnClick" que já atribuímos ao botão "Salvar" porém não havíamos criado a lógica.
-			- 1º - Vamos inserir a Server Action "Rating_CreateOrUpdate" que criamos anteriormente no modulo server, uma vez que clicar no botão salvar do nosso popup avaliações ele ira chamar a server action.
+		- Vamos agora criar a lógica para persistir os dados ao clicar no botão "Salvar", através da Client Action "SaveOnClick" que já atribuímos ao botão
+    		"Salvar" porém não havíamos criado a lógica.
+			- 1º - Vamos inserir a Server Action "Rating_CreateOrUpdate" que criamos anteriormente no modulo server, uma vez que clicar no botão salvar
+     			do nosso popup avaliações ele ira chamar a server action.
 			- 2º - Colocamos um IF que validara SE a persistência de dados foi sucesso ou não.
 				- SE **sim** ele retornara uma mensagem de **Sucesso** do nosso retorno da estrutura "Outupt.Success" que atribuímos a server action
-					- Após a persistência ter sido sucesso chamamos um Asign para limpar nossas variáveis locais que atribuímos para pré-carregar as informações do título, descrição e ID do nosso popup
+					- Após a persistência ter sido sucesso chamamos um Asign para limpar nossas variáveis locais que atribuímos para pré-carregar
+       					as informações do título, descrição e ID do nosso popup
 					- Uma vez limpo chamamos outro Asign "ClosePopup" que ira chamar o parametro de entrada "ShowPopupRating" passando valor False
 					- E finalizamos com END
 				- SE **não** ele ele retornara uma mensagem de **Erro** do nosso retorno da estrutura "Outupt.Success" que atribuímos a server action
