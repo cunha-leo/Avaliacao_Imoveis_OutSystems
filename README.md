@@ -8,7 +8,7 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 * [2ª Parte - Título da Parte 2](#documentação-da-2ª-parte)
 * [3ª Parte - Título da Parte 3](#documentação-da-3ª-parte)
 * [4ª Parte - Título da Parte 4](#documentação-da-4ª-parte)
-* [5ª Parte - Em criação ...](/Assets/Parte%205/Parte%205.md)
+* [5ª Parte - Em criação ...](./Assets/Parte%205/Parte%205.md)
 
 ## Readme in English - EN
 
@@ -40,28 +40,28 @@ Esse planejamento visual ajudou a garantir que todos os elementos fossem clarame
 As telas incluem:
 
 * Tela de Login
-  ![Figura do Mockup - Tela de Login](/Template/img/mockup-tela-login.png)
+  ![Figura do Mockup - Tela de Login](./Template/img/mockup-tela-login.png)
   
 * Dashboard
-  ![Figura do Mockup - Dashboard](/Template/img/mockup-dashboard.png)
+  ![Figura do Mockup - Dashboard](./Template/img/mockup-dashboard.png)
   
 * Cadastro de Imóvel
-  ![Figura do Mockup - Cadastro de Imóvel](/Template/img/mockup-cadastro-imovel.png)
+  ![Figura do Mockup - Cadastro de Imóvel](./Template/img/mockup-cadastro-imovel.png)
 
 * Avaliar Imóvel
-  ![Figura do Mockup - Avaliar Imóvel](/Template/img/mockup-avaliar-imovel.png)
+  ![Figura do Mockup - Avaliar Imóvel](./Template/img/mockup-avaliar-imovel.png)
 
 * Pop-up Avaliar Imóvel
-  ![Figura do Mockup - Pop-up Avaliar Imóvel](/Template/img/mockup-popup-avaliar-imovel.png)
+  ![Figura do Mockup - Pop-up Avaliar Imóvel](./Template/img/mockup-popup-avaliar-imovel.png)
 
 * Minhas Avaliações
-  ![Figura do Mockup - Minhas Avaliações](/Template/img/mockup-minhas-avaliacoes.png)
+  ![Figura do Mockup - Minhas Avaliações](./Template/img/mockup-minhas-avaliacoes.png)
 
 * Meus Imóveis
-  ![Figura do Mockup - Meus Imóveis](/Template/img/mockup-meus-imoveis.png)
+  ![Figura do Mockup - Meus Imóveis](./Template/img/mockup-meus-imoveis.png)
 
 * Imóveis que já morei
-  ![Figura do Mockup - Imóveis que já morei](/Template/img/mockup-imoveis-que-ja-morei.png)
+  ![Figura do Mockup - Imóveis que já morei](./Template/img/mockup-imoveis-que-ja-morei.png)
 
 ### Estrutura do Projeto
 
@@ -713,7 +713,7 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 
 ## Criando Modal de Avaliação
 
-![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao01.png)
+![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao01.png)
 
 - **1º** Iniciamos o **Modulo ARR_SERVECE** Onde será criado a **Server Action: Rating_CreateOrUpdate**
 
@@ -744,40 +744,89 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
         - **Output.Message** (AllExceptions.ExceptionMessage) -> Vai receber a propria ação de Erro, tornando dinamico.
         - Fim.
 
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao02.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao03.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao04.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao05.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao06.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao07.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao08.png)
-    ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao09.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao02.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao03.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao04.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao05.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao06.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao07.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao08.png)
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao09.png)
 
 - **2º** Criando o Pop-up(Modal) no **Modulo ARR_WEB**
   *1º* Add Componente a tela de Avaliação de Imóvel
   *2º* Esse componente espera uma **váriavel local** para validar a hora que **Abre** e **Fecha**
-  ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao10.png)
+  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao10.png)
   *3º* Add a váriavel local **ShowPopupRating** que está setada como Bollean e Default(false), pois queremos que ao entrar nessa página a mesma esteja desativada, somente abrirá quando acionarmos.
-  ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao11.png)
+  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao11.png)
   *4º* Atribuirmos a varivel local ao Popup, dessa forma agora o mesmo já recebe a variavel e podemos então criar o fluxo de **ClientAction** para abrir e fechar.
-  ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao12.png)
+  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao12.png)
   *5º* Criando o **ClientAction** para abrir e fechar o popup, para fazer esse passo lembra que colocamos a variável como padrão (False), ou seja será ativado a partir do inverso desse default.
   - Vamos criar o **ClientAction** de **OnClick** no Container de **Card de Avaliação**, pois como está dinamico uma vez que eu aplique no container cada card chamará essa ação.
   - Então a ativação será atraves de um click no Card dos Imoveis, dessa forma no componente a opções de evento onde vamos adicionar o **O tipo de evento(on click)** e o **Handler(ShowPopupRating)** no caso que recebe a nossa variável local.
-  ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao13.png)
+  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao13.png)
   - A ação criada **ShowPopupRating**, que a lógica será um **not** + variavel local
   - O que explicamos que a variavel esta como default False ou seja o (not) irá realizar o inverso dela que será (True)
-  ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao14.png)
+  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao14.png)
   *6º* Vamos implementar agora o nosso **ModalAvaliacao(Popup)** na tela
     - Criamos uma váriavel local para receber nossa tabela **Rating** que será usada no **Formulário** após arrastamos para nosso **Widget Tree** para o formulário dentro do popup, que será as informações que vamos trabalhar.
-   ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao15.png)
+   ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao15.png)
     - Ajustamos nossa estrutura onde **Título e Subtitulo** recebe uma expression que depois vamos colocar para que sempre que for um apartamento ou caso mude e também o icone que vira depois.
     - Ajustamos os campos do formulário, para que fique o de acordo com nosso mockup
     - Criamos os botões de **Cancelar** que recebe a ação **ShowRating** para fechar o popup, que é a negativa (not) da variavel local default (False) ou seja se estiver fechado abrirá se estiver aberto fechará e o botão **Save** ainda sem fluxo.
-   ![Parte 4](/Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao16.png)
-
-
-
+   ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao16.png)
+- Uma vez que criamos o form do Modal até aqui, vamos realizar alguns ajustes para que a tela fique mais fluida.
+	- 1º - Vamos trocar o input de checkbox das recomendações para um "Radio group" que nos dará a opção de sim ou não.
+	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao17.png)
+	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao18.png)
+	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao19.png)
+	- 2º - Vamos alterar o campo de "Observação" que está com Input, porém o mais adequado é um "textArea".
+		- Lembrando que sempre que trocar um input ou checkbox ocorrerá um erro com Label, pois sempre vem vinculado ao input, desta maneira temos que altera-lo também, em alguns campos como textarea é onde usamos radiogroup não são necessários o vinculo neste caso então podemos colocar o Label como "None".
+	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao20.png)
+	- 3º - Alterando o Título e descrição do popup para retornar se é casa ou apartamento e o endereço, de forma dinâmica antes de persistir nossos dados.
+		- Antes colocamos essas duas expressions como vazia com um dafault de valor padrão
+	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao21.png)
+	- Para deixar dinâmico vamos ter que criar duas variáveis locais "TypeImmobile" e "ImmobileAddress" e atribui-las a nossa ação "ShowPopupRating" através do Asign, essa função é usada para que quando clicarmos em um card ela abrirá com formulário de avaliação com algumas informações setadas.
+		- Ambas as variáveis locais devem ser do tipo texto 
+		![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao22.png)
+		- Como vemos na figura abaixo estamos preenchendo o Asign com 4 tipo de informações.
+			- 1º - recebemos o parâmetro de entrada "ShowPopupRating" que abrirá o popup toda vez que for clicada o mesmo se iniciara com valor False e a condição será "not ShowPopupRating".
+			- 2º - Atribuímos nossa variável local "TypeImmobile" que é o título do nosso popup que trará se é casa ou apartamento a lógica foi:
+			```Js
+		If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
+			```
+			- 3º  - Atribuímos nossa variável local "ImmobileAddress" que é a descrição do nosso popup que trará a rua e o número a lógica do imóvel foi:
+			```Js
+		If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
+			```
+			- 4º - Pegaremos nossa variável local Rating selecionaremos o nosso ID e receberemos de valor o ID atual que esta sendo clicado.
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao24.png)
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao25.png)
+		![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao23.png)
+	- 4º - Persistindo os dados do "Popup" 
+		- Vamos agora criar a lógica para persistir os dados ao clicar no botão "Salvar", através da Client Action "SaveOnClick" que já atribuímos ao botão "Salvar" porém não havíamos criado a lógica.
+			- 1º - Vamos inserir a Server Action "Rating_CreateOrUpdate" que criamos anteriormente no modulo server, uma vez que clicar no botão salvar do nosso popup avaliações ele ira chamar a server action.
+			- 2º - Colocamos um IF que validara SE a persistência de dados foi sucesso ou não.
+				- SE **sim** ele retornara uma mensagem de **Sucesso** do nosso retorno da estrutura "Outupt.Success" que atribuímos a server action
+					- Após a persistência ter sido sucesso chamamos um Asign para limpar nossas variáveis locais que atribuímos para pré-carregar as informações do título, descrição e ID do nosso popup
+					- Uma vez limpo chamamos outro Asign "ClosePopup" que ira chamar o parametro de entrada "ShowPopupRating" passando valor False
+					- E finalizamos com END
+				- SE **não** ele ele retornara uma mensagem de **Erro** do nosso retorno da estrutura "Outupt.Success" que atribuímos a server action
+					- Apenas atribuímos um Asign vazio para deixar a estrutura mais visualmente agradável, não é necessária
+					- E finalizamos com END
+				- Segue abaixo cada parte da lógica acima: necessário 
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao26.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao27.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao28.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao29.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao30.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao31.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao32.png)
+	- 5º - Vamos atribuir ao criar um novo dado no "Reating" o nosso Created At e Created By.
+		- Para isso temos que ir para o Modulo de **SERVICES** pois e nele que iremos atribuir os mesmos.
+		- Vamos ir no nosso fluxo da Server Action "Reting_CreateOrUpdate" no Source.
+			- Onde está sendo atribuído a tabela **Rating** vamos atribuir campo por campo para configurar os campos "Created At" e "Created By"
+		 ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao33.png)
 -----------------------------------
 
 ## EM CRIAÇÃO ..... EM BREVE PARTE 5
