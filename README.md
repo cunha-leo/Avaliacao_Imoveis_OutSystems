@@ -832,6 +832,64 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 		- Vamos ir no nosso fluxo da Server Action "Reting_CreateOrUpdate" no Source.
 			- Onde está sendo atribuído a tabela **Rating** vamos atribuir campo por campo para configurar os campos "Created At" e "Created By"
 		 ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao33.png)
+		- Atribuindo funções para Created At [CurrDateTime()] e Created By[GetUserId()]
+			- Essa alteração no modulo Services agora após salvar, iremos para o modulo Web atualizar as dependências para que reflita.
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao34.png)
+		- Criando a tela "MyRating" onde após confirmar o Popup da anterior ira persistir e irá aparecer para a pessoa suas avaliações nessa tela.
+			- 1º - Após criar a screen, puxamos da **Aba Data**, a tabela Immobile 
+				- Com ela já veio a relação entre Immobile, TypeImmobile, User
+			- 2º - Criamos um Join com a tabela **Rating** pois é nela que está as nossas avaliações.
+				- Realizamos o **join** com a ligação (**Only with**) neste caso é necessário porque se não iria trazer todas os registros tendo ou não avaliações e queremos neste caso só trazer os dados caso contenha registros.
+				- Criamos um filtro para resolver a questão de visibilidade ou seja o usuário logado só pode ver suas próprias avaliações, dessa forma criamos um filtro.
+				```JS
+				Rating.CreatedBy = GetUserId()
+				```
+			- 3º - A implementação da lógica foi: 
+				- Vai na tabela de **imóveis** e traga o registro que possui **avaliações** e essas avaliações precisa ser exatamente relacionado ao ID de quem está logado no sistema, o usuário só verá os registros de avaliações dele.
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao35.png)
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao36.png)
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao37.png)
+			
+		- Uma vez que ajustamos a tela de "Minhas Avaliações" vamos organizar a tabela que será composta por:
+			- 1º Endereço: 
+			```JS
+			Street + GetImmobiles.List.Current.Immobile.Street+", "+GetImmobiles.List.Current.Immobile.Street_Number
+			```
+			- 2º CEP : 
+			```JS
+			GetImmobiles.List.Current.Immobile.CEP
+			```
+			- 3º Avaliações: 
+			```JS
+			GetImmobiles.List.Current.TypeExperience.Label
+			```
+			- 4º Recomendações: 
+			```JS
+			If(GetImmobiles.List.Current.Rating.Recommend,"Sim","Não")
+			```
+			- 5º Quando
+			```JS
+			DateTimeToDate(GetImmobiles.List.Current.Immobile.CreatedAt)
+			```
+			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao38.png)
+		-  Criando o campo "Search" para pesquisar a avaliação.
+			- A pesquisa será pelo **nome da rua** ou **Cep**
+			- 1º - Adicionamos um Input Serach
+			- 2º - Colocamos um placeholder para facilitar o entendimento do usuário.
+			- 3º -  Criamos uma variável local "SearchRating" como text, que será nossa variável que capturará o valor que digitarmos.
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao42.png)
+			- 4º Criamos no Input uma ação On Change: **SearchOnChange**, que será um delimitador de caracteres ou seja não será atualizado o campo de busca ou ativado a busca SE não for >= a 3 caracteres. Após será atualizado a tabela através de um refresh
+				- Ao digitar no Input de pesquisa:
+					- 1º - Iniciará a ação OnChange
+					- 2º - Verificará se 
+				```JS 
+				Length(SearchRatings) >= 3
+				```
+				- 3º - SE for **False** finaliza ou SE for **True** atualiza os dados da tabela
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao40.png)
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao41.png)
+			- 5º Criamos o filtro no Agrregatte: GetImmobile que fará um like no campo Search da **rua** e **cep**
+				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao39.png)
 -----------------------------------
 
 ## EM CRIAÇÃO ..... EM BREVE PARTE 5
