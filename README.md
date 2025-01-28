@@ -520,9 +520,9 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 
 * 3º Aplicando a lógica:
   * Add um **IF**, SE o input CEP > 7, ou seja se ele tiver 8 caracteres ou mais
-  * ```Js
-        Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
-    ```
+	```Js
+	Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
+	```
     * SE False ele finaliza, pois tem menos de 8 caracteres
     * Se True chamo minha API de serviço **ViaCEP** e verifico se eu consigo pegar alguma informação baseado no CEP digitado no Input
 
@@ -798,10 +798,11 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 			If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
 			```
 			- 3º  - Atribuímos nossa variável local "ImmobileAddress" que é a descrição do nosso popup que trará a rua e o número a lógica do imóvel foi:
-	   		```Js
-			If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
-			```
-			- 4º - Pegaremos nossa variável local Rating selecionaremos o nosso ID e receberemos de valor o ID atual que esta sendo clicado.
+```Js
+If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
+```
+		
+- 4º - Pegaremos nossa variável local Rating selecionaremos o nosso ID e receberemos de valor o ID atual que esta sendo clicado.
 			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao24.png)
 			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao25.png)
 			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao23.png)
