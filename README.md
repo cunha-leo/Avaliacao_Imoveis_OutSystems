@@ -891,6 +891,9 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao41.png)
 			- 5º Criamos o filtro no Agrregatte: GetImmobile que fará um like no campo Search da **rua** e **cep**
 				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao39.png)
+
 -----------------------------------
+
+## Documentação da 5ª Parte
 
 ## EM CRIAÇÃO ..... EM BREVE PARTE 5
