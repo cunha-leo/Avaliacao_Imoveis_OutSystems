@@ -8,7 +8,7 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 * [2ª Parte - Título da Parte 2](#documentação-da-2ª-parte)
 * [3ª Parte - Título da Parte 3](#documentação-da-3ª-parte)
 * [4ª Parte - Título da Parte 4](#documentação-da-4ª-parte)
-* [5ª Parte - Em criação ...](./Assets/Parte%205/Parte%205.md)
+* [5ª Parte - Em criação ...](#documentação-da-5ª-parte)
 
 ## Readme in English - EN
 
@@ -879,12 +879,12 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 			- 2º - Colocamos um placeholder para facilitar o entendimento do usuário.
 			- 3º -  Criamos uma variável local "SearchRating" como text, que será nossa variável que capturará o valor que digitarmos.
 				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao42.png)
-			- 4º Criamos no Input uma ação On Change: **SearchOnChange**, que será um delimitador de caracteres ou seja não será atualizado o campo de busca ou ativado a busca SE não for >= a 3 caracteres. Após será atualizado a tabela através de um refresh
+			- 4º Criamos no Input uma ação On Change: **SearchOnChange**, que será um delimitador de caracteres ou seja só será atualizado o campo de busca SE ao digitar no campo Search for >= 3 ou = 0 caracteres. Após será atualizado a tabela através de um refresh
 				- Ao digitar no Input de pesquisa:
 					- 1º - Iniciará a ação OnChange
 					- 2º - Verificará se 
 				```JS 
-				Length(SearchRatings) >= 3
+				Length(SearchRatings) >= 3 or Length(SearchRatings) = 0
 				```
 				- 3º - SE for **False** finaliza ou SE for **True** atualiza os dados da tabela
 				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao40.png)
@@ -895,5 +895,75 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 -----------------------------------
 
 ## Documentação da 5ª Parte
+
+## **Nesta Parte:**
+
+- Ajustes no menu
+- Evento de editar (tela minhas avaliações)
+- Tela de Dashboard
+- Como trazer dados de gráficos do módulo service
+- Como manipular dados dos gráfico
+- Adicionando atributo em aggregate
+- Trabalhando com Switch
+- Tela Imóveis que já morei
+- Ajustes gerais
+
+### Ajustando menu
+
+- Ajustando o menu
+	- Foi configurado com os nomes adequados para entendimento da navegação mais fluida
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao43.png)
+
+-----------------
+
+### Criando a tela do Dashboard
+
+- A ideia desse dashboard é ter alguns gráficos que nos mostrará algumas métricas importantes.
+	- Também criarmos a lógica desses gráficos no modulo de Services e consumi-los e estiliza-los no módulo Web.
+- 1º - Acessando o Módulo Services, vamos até a aba "Logic" e vamos criar uma pasta para as ações de servidor especificas para o Dashboard como fizemos anteriormente com as demais.
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao44.png)
+- 2º - Vamos criar uma Server Action para cada gráfico 
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao45.png)
+	- Ambas as ações devem ser públicas para que eu possa consumir depois no módulo Web.
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao46.png)
+- 3º - Criando a Server Action do Rating(Avaliações)
+	- 1º - Arrastar um Aggregate para o fluxo 
+	- 2º - Adicionamos a tabela Rating que sera nossa principal
+	- 3º - Criamos um join (Only With) a tabela TypeExperience
+		- Aqui fazemos isso porque a ideia é que seja contado a quantidade de avaliações por tipo, por exemplo 3 avaliações boas, 4 ruins ...
+		- Para isso além do Join é preciso realizar um **Count** na **Rating.ID** para realizar a contagem e agrupar a **TypeExperience.Label** para trazer a contagem por tipo de avaliação.
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao47.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao48.png)
+	- 4º - Agora eu preciso passar esses dados de uma forma que o gráfico entenda, porque não estamos passando esse aggregate direto na tela no módulo Web.
+		- Dessa forma para passar vou precisar de uma estrutura determinada que é o **Datapoint** do gráfico 
+		- Para isso vamos puxar essa dependência dentro do módulo service
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao49.png)
+		- Uma observação a OutSystems trabalha com os modelos de gráficos da **Highcharts** dessa maneira caso tenha algum gráfico lá que possa interessar é provável que possa ser importado para a OutSystems. 
+		- Seleciono a dependência que eu quero e aplico 
+			- Após isso irei inserir 2 **parâmetros de saída**
+				- 1º -  Será **Output** que é nossa estrutura de retorno das mensagem e sucesso
+				- 2º - Vamos adicionar o parâmetro de saída, referente ao DataPoint que adicionamos.
+					- Para isso temos que primeiro clicar em Add Parâmetro de saída
+					- Depois clicar na seta do campo **Data Type** selecionar o tipo **List** e só depois rolar para baixo e selecionar **DataPoint**
+					- Isso deve ser feito porque por padrão o parâmetro de saída vem como somente record só que queremos vários datapoints ou seja uma **Lista de Dados**
+				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao50.png)
+				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao51.png)
+				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao52.png)
+				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao53.png)
+	- 5º - Vamos estruturar agora a lógica do fluxo da Server Action (Ratting)
+		- 1º - Criamos nosso Aggregate, realizamos os joins e configuramos nossos parâmetros de saída
+		- 2º - Agora vamos arrastar a **Run Server Action** digitar List -> que retornará a função **ListAppendAll** que permite passar os valores vindo do nosso Aggregate para o nosso DataPoint
+		- 3º - Uma vez setada o **ListAppendAll** vamos adicionar um Asign que receberá o nosso **Output** caso retorne sucesso e finaliza.
+			- Output.Success = True
+			- Output.Massage = "Dados coletados com sucesso"
+		- 4º - Criando a lógica de exceção através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
+			- Output.Success = False
+			- Output.Massage = AllExcepetion.ExcepetionMessage (receberá a mensagem de erro da propria **AllExpections**)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao54.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao55.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao56.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao57.png)
+- 4º - Criando a Server Action do ImmobileRegister ...
+-------------
 
 ## EM CRIAÇÃO ..... EM BREVE PARTE 5
