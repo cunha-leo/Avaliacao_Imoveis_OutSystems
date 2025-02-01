@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Explorador de arquivos"
@@ -77,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "e1e098e24369c3d9",
@@ -164,17 +166,17 @@
   },
   "active": "9bf4e77541ec879b",
   "lastOpenFiles": [
+    "Assets/Parte 5/img/ModalAvaliacao62.png",
+    "Assets/Parte 5/img/ModalAvaliacao61.png",
+    "Assets/Parte 5/img/ModalAvaliacao60.png",
+    "Assets/Parte 5/img/ModalAvaliacao59.png",
+    "Assets/Parte 5/img/ModalAvaliacao58.png",
     "Assets/Parte 5/img/ModalAvaliacao57.png",
     "Assets/Parte 5/img/ModalAvaliacao56.png",
     "Assets/Parte 5/img/ModalAvaliacao55.png",
     "Assets/Parte 5/img/ModalAvaliacao54.png",
     "Assets/Parte 5/img/ModalAvaliacao53.png",
     "Assets/Parte 5/img/ModalAvaliacao52.png",
-    "Assets/Parte 5/img/ModalAvaliacao51.png",
-    "Assets/Parte 5/img/ModalAvaliacao50.png",
-    "Assets/Parte 5/img/ModalAvaliacao49.png",
-    "Assets/Parte 5/img/ModalAvaliacao48.png",
-    "Assets/Parte 5/img/ModalAvaliacao47.png",
     "README.md",
     "Assets/Parte 5/Parte 5.md",
     "Sem título.md",

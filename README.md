@@ -14,7 +14,7 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 
 If you are an English reader, visit the link below:
 
-* [Click here docuementation](/README-EN.md)
+* [Click here documentation](/README-EN.md)
 
 ## Readme en Español - ES
 
@@ -39,28 +39,28 @@ Esse planejamento visual ajudou a garantir que todos os elementos fossem clarame
 
 As telas incluem:
 
-* Tela de Login
+* Tela de Login  
   ![Figura do Mockup - Tela de Login](./Template/img/mockup-tela-login.png)
   
-* Dashboard
+* Dashboard  
   ![Figura do Mockup - Dashboard](./Template/img/mockup-dashboard.png)
   
-* Cadastro de Imóvel
+* Cadastro de Imóvel  
   ![Figura do Mockup - Cadastro de Imóvel](./Template/img/mockup-cadastro-imovel.png)
 
-* Avaliar Imóvel
+* Avaliar Imóvel  
   ![Figura do Mockup - Avaliar Imóvel](./Template/img/mockup-avaliar-imovel.png)
 
-* Pop-up Avaliar Imóvel
+* Pop-up Avaliar Imóvel  
   ![Figura do Mockup - Pop-up Avaliar Imóvel](./Template/img/mockup-popup-avaliar-imovel.png)
 
-* Minhas Avaliações
+* Minhas Avaliações  
   ![Figura do Mockup - Minhas Avaliações](./Template/img/mockup-minhas-avaliacoes.png)
 
-* Meus Imóveis
+* Meus Imóveis  
   ![Figura do Mockup - Meus Imóveis](./Template/img/mockup-meus-imoveis.png)
 
-* Imóveis que já morei
+* Imóveis que já morei  
   ![Figura do Mockup - Imóveis que já morei](./Template/img/mockup-imoveis-que-ja-morei.png)
 
 ### Estrutura do Projeto
@@ -69,43 +69,36 @@ O projeto foi dividido em dois módulos principais:
 
 1. **Módulo AAR\_Services (Service)**:
    * Responsável pela lógica de backend, incluindo a arquitetura do banco de dados, os relacionamentos e as ações CRUD.
-
    * O módulo foi configurado para ser **público**, permitindo que outros módulos acessem suas funcionalidades como leitura.
-
    * A arquitetura de entidades foi projetada para ser clara e garantir a integridade dos dados. O diagrama de entidade (ER) criei para facilitar a minha visualização, segue o mesmo é uma previa de cada tabela, abaixo:
-
      ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
-
-   * **Criamos o diagrama ER**:
+   * **Criamos o diagrama ER**:  
      ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
 
    **Tabelas Criadas**:
 
-   * **Tabela Immobile**: Contém os dados dos imóveis cadastrados, como CEP, endereço, cidade, proprietário, entre outros.
+   * **Tabela Immobile**: Contém os dados dos imóveis cadastrados, como CEP, endereço, cidade, proprietário, entre outros.  
      ![Diagrama ER](./Assets/Parte%201/img/Data/Table/ER_Immobile.png)
 
-   * **Tabela Rating**: Armazena as avaliações dos imóveis, incluindo informações como tempo de locação, recomendações e observações dos usuários.
+   * **Tabela Rating**: Armazena as avaliações dos imóveis, incluindo informações como tempo de locação, recomendações e observações dos usuários.  
      ![Diagrama ER](./Assets/Parte%201/img/Data/Table/ER_Rating.png)
   
-   * **Tabela TypeExperience**: Armazena os tipos de experiência relacionados aos imóveis. Possui registros como **Excelente, Bom, Neutro, Ruim, Péssimo**.
+   * **Tabela TypeExperience**: Armazena os tipos de experiência relacionados aos imóveis. Possui registros como **Excelente, Bom, Neutro, Ruim, Péssimo**.  
      ![Tabela TypeExperience](./Assets/Parte%201/img/Data/Table/ER_TypeExperience.png)
 
-   * **Tabela TypeImmobile**: Armazena os tipos de imóvel disponíveis (ex.: Casa, Apartamento, Loja). Possui registros como **Casa, Apartamento, Loja**.
+   * **Tabela TypeImmobile**: Armazena os tipos de imóvel disponíveis (ex.: Casa, Apartamento, Loja). Possui registros como **Casa, Apartamento, Loja**.  
      ![Tabela TypeImmobile](./Assets/Parte%201/img/Data/Table/ER_TypeImmobile.png)
 
-   * **Tabela UserxImmobile**: Relaciona usuários aos imóveis, indicando propriedades e ocupação. São tabelas auxiliares que armazenam os tipos de experiência, tipos de imóvel, e a relação entre usuários e imóveis.
+   * **Tabela UserxImmobile**: Relaciona usuários aos imóveis, indicando propriedades e ocupação. São tabelas auxiliares que armazenam os tipos de experiência, tipos de imóvel, e a relação entre usuários e imóveis.  
      ![Tabela UserxImmobile](./Assets/Parte%201/img/Data/Table/ER_UserxImmobile.png)
 
-   * **Tabela User**: Utiliza a entidade padrão do sistema OutSystems para armazenar informações dos usuários, como data de criação e última alteração.
+   * **Tabela User**: Utiliza a entidade padrão do sistema OutSystems para armazenar informações dos usuários, como data de criação e última alteração.  
      ![Tabela User](./Assets/Parte%201/img/Data/Table/ER_User.png)
 
 2. **Módulo AAR\_WEB**:
    * Responsável pelo front-end e pelas telas da aplicação.
-
    * Foi adicionado como dependência ao **AAR\_WEB**, como leitura, para garantir a segurança e centralizar toda a lógica de servidor no módulo **AAR\_Services**.
-
    * No módulo web/reactive, podemos observar as abas completas, incluindo **Triggers, Interface, Logic, e Data**.  
-
      ![Estrutura do Módulo AAR_WEB](./Assets/Parte%201/img/Model/estrutura-aar-web.png)
 
 ### Conclusão
@@ -122,57 +115,57 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 
 ### Tela de Login
 
-* Aqui podemos observar ao lado direito que, por padrão, a tela de Login da própria OutSystems vem com:
+* Aqui podemos observar ao lado direito que, por padrão, a tela de Login da própria OutSystems vem com:  
   ![Tela de Login](./Assets/Parte%202/img/Tela%20Login/Login01.png)
 
 #### 4 Variáveis Locais
 
-* **Username**: Consumida no Input **E-mail**
+* **Username**: Consumida no Input **E-mail**  
   ![Var Username](./Assets/Parte%202/img/Tela%20Login/Var_Username.png)
 
-* **Password**: Consumida no Input **Senha**
+* **Password**: Consumida no Input **Senha**  
   ![Var Password](./Assets/Parte%202/img/Tela%20Login/Var_Password.png)
 
-* **IsExecuting**: Utilizada para informar execução de algo na ClientAction **OnInitialize**
+* **IsExecuting**: Utilizada para informar execução de algo na ClientAction **OnInitialize**  
   ![Var IsExecuting](./Assets/Parte%202/img/Tela%20Login/Var_IsExecuting.png)
 
-* **Remember**: Consumida no Input de Checkbox **Lembrar-me**
+* **Remember**: Consumida no Input de Checkbox **Lembrar-me**  
   ![Var Remember](./Assets/Parte%202/img/Tela%20Login/Var_Remember.png)
 
 #### 3 Client Actions
 
-* **ForgotPassword**: Para recuperar a senha
+* **ForgotPassword**: Para recuperar a senha  
   ![ForgotPassword](./Assets/Parte%202/img/Tela%20Login/Client/ForgotPassword.png)
 
-* **Login**: Usado no botão **Entrar**
+* **Login**: Usado no botão **Entrar**  
   ![Login](./Assets/Parte%202/img/Tela%20Login/Client/Login.png)
 
-  * A lógica Login recebendo o **Variavel local IsExecuting** como True, que será após clicar no botão
+  * A lógica Login recebendo o **Variavel local IsExecuting** como True, que será após clicar no botão  
     ![IsExecuting](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-IsExecuting.png)
 
   * Após, segui para a ServerAction **DoLogin**, que é a ServerAction usada no Login
     * Que receberá as variáveis locais: Username, Password, Remember
     * A ServerAction é chamada para persistir os dados e saber se realmente salvou no banco de dados
-    * E chamar a ServerAction padrão de Login da OutSystems dentro de User
-      ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin.png)
-      ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin01.png)
-      ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin02.png)
+    * E chamar a ServerAction padrão de Login da OutSystems dentro de User  
+      ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin.png)  
+      ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin01.png)  
+      ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin02.png)  
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin03.png)
 
   * Após, irá **remover** uma mensagem de feedback ao Logar
     * Ou seja, será removida qualquer possível mensagem que apareça após realizar o login.
 
   * Após, **redirecionará**
-    * O usuário será redirecionado para a tela principal
+    * O usuário será redirecionado para a tela principal  
       ![Redirect](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin03.png)
 
 * **OnInitialize**:
   * Usado para realizar alguma ação após o carregamento da tela
-    * Como padrão, no caso da imagem abaixo
+    * Como padrão, no caso da imagem abaixo  
       ![OnInitialize](./Assets/Parte%202/img/Tela%20Login/Client/OnInitialize01.png)
 
   * Usado para receber a variável local "IsExecuting" para implementar a ação
-    * Nesse caso, o padrão está como False, ou seja, quando iniciar esta tela, por padrão, não inicialize nenhuma ação
+    * Nesse caso, o padrão está como False, ou seja, quando iniciar esta tela, por padrão, não inicialize nenhuma ação  
       ![OnInitialize](./Assets/Parte%202/img/Tela%20Login/Client/OnInitialize.png)
 
 -----------------------------------
@@ -180,15 +173,15 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 ### Mudando as ações de Autentication para o caminho correto
 
 * Isso se dá porque a lógica de servidor deve ficar no módulo **ARR_Service**
-  * Então, basta recortar da **ARR_WEB** e colocar na **AAR_Service**, aba **Logic**, e **Publicar**
+  * Então, basta recortar da **ARR_WEB** e colocar na **AAR_Service**, aba **Logic**, e **Publicar**  
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin.png)
 
-  * Deve deixar público antes de publicar, dessa forma podemos acessar no outro módulo as mesmas
+  * Deve deixar público antes de publicar, dessa forma podemos acessar no outro módulo as mesmas  
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin01.png)
 
   * Agora temos que apontar
     * Achamos as dependências, buscamos o módulo, clicamos, adicionamos e "Apply"
-    * Após aplicar, os erros irão sumir
+    * Após aplicar, os erros irão sumir  
       ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin02.png)
 
 -----------------------------------
@@ -200,42 +193,42 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela.png)
 
 * Vamos criar a partir da ABA **Data** e arrastamos para o nosso **MainFlow**
-  * Criamos então arrastando as duas telas
+  * Criamos então arrastando as duas telas  
   ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela01.png)
 
-  * **Immobiles**: Que é a tela de Listagem
+  * **Immobiles**: Que é a tela de Listagem  
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela02.png)
 
   * **ImmobileDetail**: Que é a de registro
     * Retiramos o **IF** que vem por padrão, que mostra se **true** Cadastrar ou **else** Editar, e colocamos no lugar uma **Expression**, que tem a seguinte validação:
       * SE o ImmobileId for igual a vazio ou se ele não existe, Cadastrar, se não, Editar e concatenar com Imóvel.
 
-      ```Js
+      ```javascript
       If(ImmobileId = NullIdentifier(),"Cadastrar","Editar")+" Imóvel"
       ```
 
-    * Vamos tirar agora o Form de dentro da Column1, para que ele expanda
-      ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela03.png)
+    * Vamos tirar agora o Form de dentro da Column1, para que ele expanda  
+      ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela03.png)  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela04.png)
 
-    * Arrastando o **Adaptive/Columns2** para dentro do **Form** e dividindo as colunas
+    * Arrastando o **Adaptive/Columns2** para dentro do **Form** e dividindo as colunas  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela05.png)
 
-    * Ajustado ficou assim:
+    * Ajustado ficou assim:  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela06.png)
 
     * Foi trocado **checkbox** por **radioGroup**, dessa forma ficou mais visual
       * O **Label** deixamos como **None** para não pegar nenhuma propriedade, pois nesse caso é um **True** ou **False** no Radio, não sendo necessário amarrar ao Label
-      * Alteramos também o lado dos botões
+      * Alteramos também o lado dos botões  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela07.png)
 
-    * Verificando a **ClientAction** **SaveDetail** da tela **ImmobileDetail** se os dados estão persistindo corretamente
+    * Verificando a **ClientAction** **SaveDetail** da tela **ImmobileDetail** se os dados estão persistindo corretamente  
       ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client/SaveDetail.png)
 
-      * Aqui ainda não está fazendo a persistência dos dados
+      * Aqui ainda não está fazendo a persistência dos dados  
         ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client/SaveDetail01.png)
 
-      * Mostrando como a tela está ficando visualmente
+      * Mostrando como a tela está ficando visualmente  
         ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client/SaveDetail02.png)
 
 ### Módulo: ARR_Services
@@ -246,7 +239,7 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
   * Criamos uma pasta somente com o nome da Tabela que criamos para a tela
   * Aqui vamos criar a ação que irá persistir os dados
 
-* Server Action: **Immobile_CreateOrUpdate**
+* Server Action: **Immobile_CreateOrUpdate**  
   ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate.png)
 
   * A Server Action vai estar esperando:
@@ -256,35 +249,35 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
       * Para atualizar ou criar, precisamos da estrutura dela, por isso o **parâmetro de entrada** > **Immobile**
     * **Parâmetro de Saída**: **Output**
       * Agora precisamos de um parâmetro de saída para retornar as informações
-      * Dessa forma, optamos por criar uma **Structure**
+      * Dessa forma, optamos por criar uma **Structure**  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate01.png)
 
       * Criando Atributos para a **Structure Output**:
-        * **Success**: Retornará se foi sucesso ou não, com valor padrão como **false**
+        * **Success**: Retornará se foi sucesso ou não, com valor padrão como **false**  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate03.png)
 
-        * **Message**: De acordo com o retorno
+        * **Message**: De acordo com o retorno  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate04.png)
 
-        * **AccessKey**
+        * **AccessKey**  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate05.png)
 
-        * **Id**: Será **Long Integer**, porque não é um retorno definido de uma tela ou tabela; será utilizado como atributo de retorno em várias Server Actions
+        * **Id**: Será **Long Integer**, porque não é um retorno definido de uma tela ou tabela; será utilizado como atributo de retorno em várias Server Actions  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate06.png)
 
-      * Uma vez criada a **Structure**, podemos criar o **Parâmetro de Saída**:
+      * Uma vez criada a **Structure**, podemos criar o **Parâmetro de Saída**:  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate07.png)
 
-  * Criando o Fluxo da **Server Side** (Server Action)
+  * Criando o Fluxo da **Server Side** (Server Action)  
     ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate08.png)
 
   * **1ª Coisa**: Validar se estou **Criado Por** ou **Criado Como**
-    * Você é igual a **NullIdentifier()**
+    * Você é igual a **NullIdentifier()**  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate09.png)
 
   * SE **Immobile.Id** = **NullIdentifier()** [Novo registro?]
     * SE Sim: **CreateImmobile**
-    * SE Não: **UpdateImmobile**
+    * SE Não: **UpdateImmobile**  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate10.png)
 
     * Caso Sim: Temos que preencher, antes de persistir os dados, os campos **Criado Por (CreatedBy)** e **Criado Como (CreatedAt)**
@@ -963,7 +956,32 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao55.png)
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao56.png)
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao57.png)
-- 4º - Criando a Server Action do ImmobileRegister ...
+- 4º - Criando a Server Action do ImmobileRegister
+	- Da mesma forma que criamos a ServerAction anterior vamos crear a **ImmobileRegister** a ideia e obter a quantidade de IDs por Data de criação de Immobile 
+	- 1º - Vamos adicionar os paremetros de entrada o Output e o Source neste serão o mesmo da anterior.
+	- 2º - Vamos criar o fluxo:
+		- a) Arraste a tabela **Immobile da aba Data** após isso vamos abrir e realizar a seguinte ação:
+			- Count -> Immobile.Id
+			- GroupBy CreatedAt -> Immobile.CreatedAt
+		- b) Após isso temos que carregar nosso **DataPoint** para que seja consumido no módulo Web e posterior criar o gráfico, preenchendo os campos através do **ListAppendAll** com:
+			- List -> DataPoint
+			- SourceList -> GetImmobiles.List
+				- Value -> Count
+				- Label -> CreatedAt
+		- c) Uma vez preenchido o ListAppendAll, vamos preencher nosso **Assign**
+			- Output.Succes -> True
+			- Output.Massage -> "Dados coletados com sucesso"
+		- d) Vamos criar a lógica de Exceção que será a mesma da Server Action anterior através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
+			- Output.Success = False
+			- Output.Massage = AllExcepetion.ExcepetionMessage (receberá a mensagem de erro da propria **AllExpections**)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao58.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao59.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao60.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao61.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao62.png)
+- 5º - Vamos para o **Módulo Web** para consumir o que criamos no módulo server.
+	- Sempre após alteração no Server publique após vá para o módulo WEB agora e clique na tomada de conexão que é a atualização de dependência, aplique e salve.
+	- 
 -------------
 
 ## EM CRIAÇÃO ..... EM BREVE PARTE 5
