@@ -981,7 +981,47 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao62.png)
 - 5º - Vamos para o **Módulo Web** para consumir o que criamos no módulo server.
 	- Sempre após alteração no Server publique após vá para o módulo WEB agora e clique na tomada de conexão que é a atualização de dependência, aplique e salve.
-	- 
+	- CRIANDO OS GRÁFICOS 
+		- 1º - Crie uma tela chamada **Dashboard**
+		- 2º - Vamos acrescentar o título e subtítulo 
+		- 3º - Vamos a nossa arvore **Widget Tree** e começar a montar a estrutura da página.
+			- I - Adiciono um **Card** onde para maior organização e controle dos meus componentes 
+			- II - Adiciono um componente de **3 Colunas** onde vou criar os espaços adequados para cada gráfico.
+			- III - Em **Column1** arrasto o componente de gráfico **PieCharts**
+			- IV - Em **Column2** arrasto o componente de gráfico **LineCharts**
+		- 4º - Uma vez que adicionei os componentes vou agora para aba de Interface > Elements para criar as **Fatch Datas** que recebera minhas ServerActions dos gráficos que consumimos anteriormente.
+			- I - Clique com botão direito em cima da Screen desejada, neste caso a **Dashboard** e selecione a opção **Fetch Data from Other Source**
+			- II - Feito isso será criado um fluxo como Action e nela terá um parâmetro de Output.
+			- III - Uma vez o fluxo criado, arraste a **ServerAction: Ratting** que criamos para consumir o DataPoint e da mesma forma a ImmobileRegisterGraph
+			- IV - Após vamos colocar um **Asign** que receberá o nosso DataPoint
+				- Para o **Fetch Data from Other Source: RatingGraph**
+					- DataPointList -> Ratting.DataPoint
+				- Para o **Fetch Data from Other Source: ImmobileRegisterGraph**
+					- DataPointList -> ImmobileRegister.DataPoint
+			- V - Preenchendo o Output das duas **Fetch Data from Other Source: RatingGraph** e **ImmobileRegisterGraph****
+				- Uma vez clicado nele deve abrir o **Data Type** selecione a opção **List** e so depois selecione o **DataPoint** dessa forma ele receberá todos os atributos da lista criada anteriormente na Server Actions
+				- Se perceber ela realmente fica exata a construída na **ServerAction**
+			- VI - Agora que criamos todo o fluxo vamos voltar nos gráficos que atribuimos no laytouts onde cada gráfico vai esperar um valor **DataPointList** 
+				- No gráfico vamos apenas selecionar o que colocamos no **Asign** das nossas **Fetch Data from Other Source** criadas.
+					- Gráfico **PieChart**
+						- DataPointList -> RatingGraph.DataPointList
+					- Gráfico **LineChart**
+						- DataPointList -> ImmobileRegisterGraph.DataPointList
+		Dessa forma criamos os dois gráficos principais da nossa aplicação, segue as imagens passo a passo do que foi explicado acima.
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao64.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao66.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao67.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao76.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao68.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao69.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao70.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao71.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao72.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao73.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao74.png)
+		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao75.png)
+- 6º - Criando a Tela : **Imóveis que já morei**
+	- Toda essa tela será criada no módulo **WEB**
 -------------
 
 ## EM CRIAÇÃO ..... EM BREVE PARTE 5
