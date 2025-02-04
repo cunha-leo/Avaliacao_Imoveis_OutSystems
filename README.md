@@ -920,9 +920,9 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 	- Ambas as ações devem ser públicas para que eu possa consumir depois no módulo Web.
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao46.png)
 - 3º - Criando a Server Action do Rating(Avaliações)
-	- 1º - Arrastar um Aggregate para o fluxo 
-	- 2º - Adicionamos a tabela Rating que sera nossa principal
-	- 3º - Criamos um join (Only With) a tabela TypeExperience
+	- I - Arrastar um Aggregate para o fluxo 
+	- II - Adicionamos a tabela Rating que sera nossa principal
+	- III - Criamos um join (Only With) a tabela TypeExperience
 		- Aqui fazemos isso porque a ideia é que seja contado a quantidade de avaliações por tipo, por exemplo 3 avaliações boas, 4 ruins ...
 		- Para isso além do Join é preciso realizar um **Count** na **Rating.ID** para realizar a contagem e agrupar a **TypeExperience.Label** para trazer a contagem por tipo de avaliação.
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao47.png)
@@ -934,22 +934,22 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 		- Uma observação a OutSystems trabalha com os modelos de gráficos da **Highcharts** dessa maneira caso tenha algum gráfico lá que possa interessar é provável que possa ser importado para a OutSystems. 
 		- Seleciono a dependência que eu quero e aplico 
 			- Após isso irei inserir 2 **parâmetros de saída**
-				- 1º -  Será **Output** que é nossa estrutura de retorno das mensagem e sucesso
-				- 2º - Vamos adicionar o parâmetro de saída, referente ao DataPoint que adicionamos.
-					- Para isso temos que primeiro clicar em Add Parâmetro de saída
-					- Depois clicar na seta do campo **Data Type** selecionar o tipo **List** e só depois rolar para baixo e selecionar **DataPoint**
-					- Isso deve ser feito porque por padrão o parâmetro de saída vem como somente record só que queremos vários datapoints ou seja uma **Lista de Dados**
+				- I -  Será **Output** que é nossa estrutura de retorno das mensagem e sucesso
+				- II - Vamos adicionar o parâmetro de saída, referente ao DataPoint que adicionamos.
+					- 1 -  Para isso temos que primeiro clicar em Add Parâmetro de saída
+					- 2 - Depois clicar na seta do campo **Data Type** selecionar o tipo **List** e só depois rolar para baixo e selecionar **DataPoint**
+					- 3 - Isso deve ser feito porque por padrão o parâmetro de saída vem como somente record só que queremos vários datapoints ou seja uma **Lista de Dados**
 				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao50.png)
 				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao51.png)
 				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao52.png)
 				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao53.png)
 	- 5º - Vamos estruturar agora a lógica do fluxo da Server Action (Ratting)
-		- 1º - Criamos nosso Aggregate, realizamos os joins e configuramos nossos parâmetros de saída
-		- 2º - Agora vamos arrastar a **Run Server Action** digitar List -> que retornará a função **ListAppendAll** que permite passar os valores vindo do nosso Aggregate para o nosso DataPoint
-		- 3º - Uma vez setada o **ListAppendAll** vamos adicionar um Asign que receberá o nosso **Output** caso retorne sucesso e finaliza.
+		- I - Criamos nosso Aggregate, realizamos os joins e configuramos nossos parâmetros de saída
+		- II - Agora vamos arrastar a **Run Server Action** digitar List -> que retornará a função **ListAppendAll** que permite passar os valores vindo do nosso Aggregate para o nosso DataPoint
+		- III - Uma vez setada o **ListAppendAll** vamos adicionar um Asign que receberá o nosso **Output** caso retorne sucesso e finaliza.
 			- Output.Success = True
 			- Output.Massage = "Dados coletados com sucesso"
-		- 4º - Criando a lógica de exceção através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
+		- IV - Criando a lógica de exceção através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
 			- Output.Success = False
 			- Output.Massage = AllExcepetion.ExcepetionMessage (receberá a mensagem de erro da propria **AllExpections**)
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao54.png)
@@ -958,20 +958,20 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao57.png)
 - 4º - Criando a Server Action do ImmobileRegister
 	- Da mesma forma que criamos a ServerAction anterior vamos crear a **ImmobileRegister** a ideia e obter a quantidade de IDs por Data de criação de Immobile 
-	- 1º - Vamos adicionar os paremetros de entrada o Output e o Source neste serão o mesmo da anterior.
-	- 2º - Vamos criar o fluxo:
-		- a) Arraste a tabela **Immobile da aba Data** após isso vamos abrir e realizar a seguinte ação:
+	- I - Vamos adicionar os paremetros de entrada o Output e o Source neste serão o mesmo da anterior.
+	- II - Vamos criar o fluxo:
+		- 1 - Arraste a tabela **Immobile da aba Data** após isso vamos abrir e realizar a seguinte ação:
 			- Count -> Immobile.Id
 			- GroupBy CreatedAt -> Immobile.CreatedAt
-		- b) Após isso temos que carregar nosso **DataPoint** para que seja consumido no módulo Web e posterior criar o gráfico, preenchendo os campos através do **ListAppendAll** com:
+		- 2 - Após isso temos que carregar nosso **DataPoint** para que seja consumido no módulo Web e posterior criar o gráfico, preenchendo os campos através do **ListAppendAll** com:
 			- List -> DataPoint
 			- SourceList -> GetImmobiles.List
 				- Value -> Count
 				- Label -> CreatedAt
-		- c) Uma vez preenchido o ListAppendAll, vamos preencher nosso **Assign**
+		- 3 -  Uma vez preenchido o ListAppendAll, vamos preencher nosso **Assign**
 			- Output.Succes -> True
 			- Output.Massage -> "Dados coletados com sucesso"
-		- d) Vamos criar a lógica de Exceção que será a mesma da Server Action anterior através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
+		- 4 -  Vamos criar a lógica de Exceção que será a mesma da Server Action anterior através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
 			- Output.Success = False
 			- Output.Massage = AllExcepetion.ExcepetionMessage (receberá a mensagem de erro da propria **AllExpections**)
 	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao58.png)
@@ -982,26 +982,26 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 - 5º - Vamos para o **Módulo Web** para consumir o que criamos no módulo server.
 	- Sempre após alteração no Server publique após vá para o módulo WEB agora e clique na tomada de conexão que é a atualização de dependência, aplique e salve.
 	- CRIANDO OS GRÁFICOS 
-		- 1º - Crie uma tela chamada **Dashboard**
-		- 2º - Vamos acrescentar o título e subtítulo 
-		- 3º - Vamos a nossa arvore **Widget Tree** e começar a montar a estrutura da página.
-			- I - Adiciono um **Card** onde para maior organização e controle dos meus componentes 
-			- II - Adiciono um componente de **3 Colunas** onde vou criar os espaços adequados para cada gráfico.
-			- III - Em **Column1** arrasto o componente de gráfico **PieCharts**
-			- IV - Em **Column2** arrasto o componente de gráfico **LineCharts**
-		- 4º - Uma vez que adicionei os componentes vou agora para aba de Interface > Elements para criar as **Fatch Datas** que recebera minhas ServerActions dos gráficos que consumimos anteriormente.
-			- I - Clique com botão direito em cima da Screen desejada, neste caso a **Dashboard** e selecione a opção **Fetch Data from Other Source**
-			- II - Feito isso será criado um fluxo como Action e nela terá um parâmetro de Output.
-			- III - Uma vez o fluxo criado, arraste a **ServerAction: Ratting** que criamos para consumir o DataPoint e da mesma forma a ImmobileRegisterGraph
-			- IV - Após vamos colocar um **Asign** que receberá o nosso DataPoint
+		- I - Crie uma tela chamada **Dashboard**
+		- II - Vamos acrescentar o título e subtítulo 
+		- III - Vamos a nossa arvore **Widget Tree** e começar a montar a estrutura da página.
+			- 1 - Adiciono um **Card** onde para maior organização e controle dos meus componentes 
+			- 2 - Adiciono um componente de **3 Colunas** onde vou criar os espaços adequados para cada gráfico.
+			- 3 - Em **Column1** arrasto o componente de gráfico **PieCharts**
+			- 4 - Em **Column2** arrasto o componente de gráfico **LineCharts**
+		- IV - Uma vez que adicionei os componentes vou agora para aba de Interface > Elements para criar as **Fatch Datas** que recebera minhas ServerActions dos gráficos que consumimos anteriormente.
+			- 1 - Clique com botão direito em cima da Screen desejada, neste caso a **Dashboard** e selecione a opção **Fetch Data from Other Source**
+			- 2 - Feito isso será criado um fluxo como Action e nela terá um parâmetro de Output.
+			- 3 - Uma vez o fluxo criado, arraste a **ServerAction: Ratting** que criamos para consumir o DataPoint e da mesma forma a ImmobileRegisterGraph
+			- 4 - Após vamos colocar um **Asign** que receberá o nosso DataPoint
 				- Para o **Fetch Data from Other Source: RatingGraph**
 					- DataPointList -> Ratting.DataPoint
 				- Para o **Fetch Data from Other Source: ImmobileRegisterGraph**
 					- DataPointList -> ImmobileRegister.DataPoint
-			- V - Preenchendo o Output das duas **Fetch Data from Other Source: RatingGraph** e **ImmobileRegisterGraph****
+			- 5 - Preenchendo o Output das duas **Fetch Data from Other Source: RatingGraph** e **ImmobileRegisterGraph****
 				- Uma vez clicado nele deve abrir o **Data Type** selecione a opção **List** e so depois selecione o **DataPoint** dessa forma ele receberá todos os atributos da lista criada anteriormente na Server Actions
 				- Se perceber ela realmente fica exata a construída na **ServerAction**
-			- VI - Agora que criamos todo o fluxo vamos voltar nos gráficos que atribuimos no laytouts onde cada gráfico vai esperar um valor **DataPointList** 
+			- 6 - Agora que criamos todo o fluxo vamos voltar nos gráficos que atribuimos no laytouts onde cada gráfico vai esperar um valor **DataPointList** 
 				- No gráfico vamos apenas selecionar o que colocamos no **Asign** das nossas **Fetch Data from Other Source** criadas.
 					- Gráfico **PieChart**
 						- DataPointList -> RatingGraph.DataPointList
@@ -1020,8 +1020,144 @@ If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa"
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao73.png)
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao74.png)
 		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao75.png)
-- 6º - Criando a Tela : **Imóveis que já morei**
-	- Toda essa tela será criada no módulo **WEB**
 -------------
+### Criando a tela do "Imóveis que já morei"
 
-## EM CRIAÇÃO ..... EM BREVE PARTE 5
+- Vamos realizar de diferente a atribuição de um **Atributo** dentro do **Aggregate**
+
+1º - Vamos ajustar ja o nosso meu colocando o Dashboard como principal
+2º - Vamos criar um Screen vazia que se chamará **ImmobileLived**
+3º - Umas vez criada e ajustado o menu, vamos criar um **Aggregate** no corpo da **Screen**
+- Na nossa lógica é trazer todo os imóveis e cruzar com os imóveis que criei para verificar se já morei ou não nessa residência.
+	- I - Arrastamos um Aggregate para a tela e vamos adicionar as tabelas necessária
+	- II - Vamos adicionar primeiramente a tabela **Immobile** e realizar um Join com a **UserXImmobile**
+	- III - Na tabela vamos imprimir o (Imóvel, CEP, Endereço + Número) e vamos colocar um **Switch** onde vamos marcar se já moramos ou não.
+		- Essa tabela listará todos os imóveis e poderemos flegar qual moramos e qual não moramos atráves do Switch.
+		- Para isso é necessário criar um atributo para validação que verificará se **CreatedAt <> NullDate()**, ou seja se o registro tem uma data nula ou não.
+		- Caso tenha significa que essa pessoa não morou nesse imóvel, se CreatedAt <> NullDate() então existe um registro, significa que essa pessoa já morou nesse imóvel.
+	- IV - Vamos criar um **ATRIBUTO : Check** no **Aggregate** para realizar essa lógica
+		- No finall do nosso Agrregate a um botão chamado **New Atribute** apenas clique nele é em seguida aparecerá para nomear esse atributo e **Adicionar uma formula** abra o campo de lógico e insira exatamente a  lógica que falamos acima.
+		```JS
+		CreatedAt <> NullDate()
+		```
+	- V - Uma vez criado podemos retornar a nossa Screen e adicionar esse atributo ao nosso **Switch**
+		- Após isso clicamos no componente **Switch** e vamos criar uma **ClientAction** que deve capturar essa informação ao mudar o Switch e inserir essa informação, como True ou False.
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao77.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao78.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao79.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao80.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao81.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao82.png)
+
+4º - Vamos agora ir para o **Módulo de Serviços** onde vamos criar a lógica desse botão e consumi-la na nossa **ClientAction**
+- Essa ação será toda vez que alguém clicar no Switch (SwichOnChange) eu vou chamar a ServerAction para atualizar os dados da tabela, seja para Crear ou Deletar esse novo registro do botão Switch.
+- Para essa lógica vamos criar 3 **Server Action**
+	- **UserXimmobile_CreateOrUpdate** -> responsável por crear ou atualizar esse dado na nossa tabela.
+	- **UserxImmobile_Delete** -> responsável por deletar esse registro de o usuário desflegar o Switch na nossa tabela.
+	- **StatusChange** -> Que irá determinar se ao clicar no Switch se irá registrar o excluir esse dado.
+- I - Vamos criar a **ServerAction: UserXimmobile_CreateOrUpdate**
+	- 1 - Ao ser chamada ela irá verificar SE é um novo registro ou NÃO
+		```JS
+		UserXImmobile.Id = NullIdentifier()
+		```
+	- 2 - Se for **True** irá chamar o nosso **CreateUserxImmobile**
+		- Nesse caso podemos chamar direto a tabela **UserxImmobile** porque como padrão na propria tabela já esta setado o CreatedAt como **CurrDateTime()**
+	- 3 - Após isso chamamos nosso Asign que irá incluir nosso Output
+		- Output.Succes -> True
+		- Output.Massage -> "Dados cadastrado com sucesso"
+		- Output.Id -> CreateUserxImmobile.Id
+	- 4 - SE o IF for **False** irá chamar o nosso **UpdateUserxImmobile**
+		- Aqui também chamamos direto a tabela **UserxImmobile**
+	- 5 - Após isso chamamos nosso Asign que irá incluir nosso Output
+		- Output.Succes -> True
+		- Output.Massage -> "Dados atualizado com sucesso"
+		- Output.Id -> UserXImmobile.Id
+	- 6 - Criando o fluxo de **Allexeptions**
+		- AllExeceptions
+		- Asign:
+			- Output.Success -> False
+			- Output.Massage -> AllExceptions.ExceptionMessage
+			
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao84.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao85.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao87.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao86.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao88.png)
+	
+- II - Vamos criar a **ServerAction: UserxImmobile_Delete**
+	- Para o Delete como parâmetro de entrada precisamos somente do ID da tabela que relaciona os usuários com os imóveis e o nosso Output.
+	- I - Ao ser chamada agregamos o proprio **DeleteUserxImmobile** que vem da tabela **UserxImmobile**
+		- Passamos somente o Id desta tabela para que ele identifique o registro a ser manipulado.
+		- Adicionamos um **Asgin**
+			- Output.Success -> True
+			- Output.Massage -> "Dado deletado com sucesso"
+		- Acrescentamos a mesma lógica de exceção dos anteriores.
+	 ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao89.png)
+	 ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao90.png)
+	 ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao91.png)
+- III - Vamos criar a **StatusChange**
+	- Essa será onde vamos receber as duas Server Actions acima para determinar a ação do botão.
+	- 1 - Para criar esse fluxo vamos criar alguns **parâmetros de entradas** necessários.
+		- Parâmetros de entrada
+			- immobileId -> Immobile Identifier
+			- UserxImmobileId -> UserxImmobileId Identifier
+			- Status -> Boolean
+		- Parâmetro de saída
+			- Output
+	- 2 - Ao clicar no **Switch** será chamado essa ServerAction que vai 
+		- I - Chamará um IF que vai verificar o parâmetro de entrada acima **Status**
+		- II - SE for True chamará a **UserXimmobile_CreateOrUpdate** 
+			- Que vai receber:
+				- Id -> NullIdentifier()
+				- ImmobileId -> GetUserId()
+				- CreatedAt -> CurrDateTime()
+		- III - Chamará um Asign, neste caso vamos consumir a mensagem que já setamos dentro da SercerAction de create e update
+			- Output.Success -> True
+			- UserxImmobile_CreateOrUpdate.Output.Massage
+		- IV - SE for Falase chamará a **UserXimmobile_CreateOrUpdate** 
+			- Que vai receber:
+				- UserXImmobileId -> UserXImmobileId
+		- V - Chamará um Asign, neste caso vamos consumir a mensagem que já setamos dentro da SercerAction de Delete
+			- Output.Success -> True
+			- UserxImmobile_Delete.Output.Massage
+		- VI - Acrescentamos a mesma lógica de **AllExpetions** para tratar as Exceções 
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao92.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao93.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao94.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao95.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao96.png)
+
+5º - Criado as ServerActions vamos para o módulo Web recebe-la
+- Uma vez que recebemos as dependências corretamente, vamos então preencher os campos do componente 
+- I - Variable será o valor do nosso **atributo** que criamos no nosso **Aggregate** anteriormente 
+	```JS
+	GetImmobiles.List.Current.Check
+	```
+- II - On Change será a nossa **ClientAction: SwitchOnChange** que criamos e dentro dela recberá a nossa **ServerActio:  StatusChange** que determina o fluxo e chama as outras duas que criamos no módulo service.
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao97.png)
+- III - Construido o fluxo da nossa  **ClientAction: SwitchOnChange** responsável pelo botão do componente **Swich**
+	- Ao clicar no botão seja **flegando** ou **desflegando** o mesmo chamara a ClienteAction
+		- 1 - Será chamada dentro da ClientAction nossa **ServerAction: StatusChange** que receberá:
+			- ImmobileId -> GetImmobiles.List.Current.Immobile.Id
+			- UserxImmobileId -> GetImmobiles.List.Current.UserxImmobile.Id
+			- Status -> GetImmobiles.List.Current.Check
+		- 2 - Será verificado através de um **IF** 
+			- Se StatusChange.Output.Success for **TRUE** retorna uma mensagem de **Sucesso** que será como valor o Output de retorno da nossa **ServerAction**
+				- Message -> StatusChange.Output.Massage
+				- Type -> Success
+			- Se StatusChange.Output.Success for **False** retorna uma mensagem de **Sucesso** que será como valor o Output de retorno da nossa **ServerAction** também
+				- Message -> StatusChange.Output.Massage
+				- Type -> Error
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao98.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao99.png)
+	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao100.png)
+6º - Criando o Input Search da tabela que será pesquisado por Cep e Endereço.
+- I - Vamos criar uma variável local que vai receber a informação digitada no InputSearch, o nome com **SearchImmobile**
+- II - Em Variable vamos receber essa variável que criamos, agora temos que criar um filtro que ao digitar será buscado por CEP e Endereço e após isso será atualizado a base.
+- III - Vamos clicar primeiro no nosso Agrregate e limitar o Max.Record para 10, isso fará que todo vez que a tela carregar ou fazer uma busca será carregada a tabela de 10 em 10 registros.
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao101.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao102.png)
+![Parte 5](./Assets/Parte%205/img/ModalAvaliacao103.png)
+
+----------------------------
+
