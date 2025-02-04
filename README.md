@@ -4,185 +4,154 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 
 ## Índice - PT
 
-* [1ª Parte - Título da Parte 1](#documentação-da-1ª-parte)
-* [2ª Parte - Título da Parte 2](#documentação-da-2ª-parte)
-* [3ª Parte - Título da Parte 3](#documentação-da-3ª-parte)
-* [4ª Parte - Título da Parte 4](#documentação-da-4ª-parte)
-* [5ª Parte - Em criação ...](#documentação-da-5ª-parte)
+- [1ª Parte - Título da Parte 1](#documentação-da-1ª-parte)
+- [2ª Parte - Título da Parte 2](#documentação-da-2ª-parte)
+- [3ª Parte - Título da Parte 3](#documentação-da-3ª-parte)
+- [4ª Parte - Título da Parte 4](#documentação-da-4ª-parte)
+- [5ª Parte - Em criação ...](#documentação-da-5ª-parte)
 
 ## Readme in English - EN
 
 If you are an English reader, visit the link below:
 
-* [Click here documentation](/README-EN.md)
+- [Click here documentation](/README-EN.md)
 
 ## Readme en Español - ES
 
 Si eres un lector en español entra en el seguinte enlace:
 
-* [Haga clic aquí](/README-ES.md)
+- [Haga clic aquí](/README-ES.md)
 
 -----------------------------------
 
 ## Documentação da 1ª Parte
 
-* Entendendo o projeto através do template
-* Criando o projeto em dois módulos Web e Services
-* Entendendo a separação de responsabilidades
-* Criando a arquitetura do banco de dados
+- Entendendo o projeto através do template
+- Criando o projeto em dois módulos Web e Services
+- Entendendo a separação de responsabilidades
+- Criando a arquitetura do banco de dados
 
 ### Mockups e Template das Telas
 
-Antes de começar a implementação, iniciamos com entendimento dos mockup das telas utilizando o **Drawio** e a importância de ter uma template visual e os benefícios que pode trazer.
+Antes de começar a implementação, iniciamos com o entendimento dos mockups das telas utilizando o **Drawio** e a importância de ter uma template visual, com os benefícios que pode trazer.
 
-Esse planejamento visual ajudou a garantir que todos os elementos fossem claramente definidos antes da implementação e trazendo clareza da aplicabilidade.
+Esse planejamento visual ajudou a garantir que todos os elementos fossem claramente definidos antes da implementação, trazendo clareza à aplicabilidade.
 
 As telas incluem:
 
-* Tela de Login  
+- Tela de Login  
   ![Figura do Mockup - Tela de Login](./Template/img/mockup-tela-login.png)
-  
-* Dashboard  
+- Dashboard  
   ![Figura do Mockup - Dashboard](./Template/img/mockup-dashboard.png)
-  
-* Cadastro de Imóvel  
+- Cadastro de Imóvel  
   ![Figura do Mockup - Cadastro de Imóvel](./Template/img/mockup-cadastro-imovel.png)
-
-* Avaliar Imóvel  
+- Avaliar Imóvel  
   ![Figura do Mockup - Avaliar Imóvel](./Template/img/mockup-avaliar-imovel.png)
-
-* Pop-up Avaliar Imóvel  
+- Pop-up Avaliar Imóvel  
   ![Figura do Mockup - Pop-up Avaliar Imóvel](./Template/img/mockup-popup-avaliar-imovel.png)
-
-* Minhas Avaliações  
+- Minhas Avaliações  
   ![Figura do Mockup - Minhas Avaliações](./Template/img/mockup-minhas-avaliacoes.png)
-
-* Meus Imóveis  
+- Meus Imóveis  
   ![Figura do Mockup - Meus Imóveis](./Template/img/mockup-meus-imoveis.png)
-
-* Imóveis que já morei  
+- Imóveis que já morei  
   ![Figura do Mockup - Imóveis que já morei](./Template/img/mockup-imoveis-que-ja-morei.png)
 
 ### Estrutura do Projeto
 
-O projeto foi dividido em dois módulos principais:
-
-1. **Módulo AAR\_Services (Service)**:
-   * Responsável pela lógica de backend, incluindo a arquitetura do banco de dados, os relacionamentos e as ações CRUD.
-   * O módulo foi configurado para ser **público**, permitindo que outros módulos acessem suas funcionalidades como leitura.
-   * A arquitetura de entidades foi projetada para ser clara e garantir a integridade dos dados. O diagrama de entidade (ER) criei para facilitar a minha visualização, segue o mesmo é uma previa de cada tabela, abaixo:
+1. **Módulo AAR_Services (Service)**:
+   - Responsável pela lógica de backend, incluindo a arquitetura do banco de dados, os relacionamentos e as ações CRUD.
+   - O módulo foi configurado para ser **público**, permitindo que outros módulos acessem suas funcionalidades como leitura.
+   - A arquitetura de entidades foi projetada para ser clara e garantir a integridade dos dados.  
+     O diagrama de entidade (ER) foi criado para facilitar a visualização e segue abaixo uma prévia de cada tabela:
      ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
-   * **Criamos o diagrama ER**:  
+   - **Criamos o diagrama ER**:  
      ![Diagrama ER](./Assets/Parte%201/img/Data/ER/ER01.png)
-
-   **Tabelas Criadas**:
-
-   * **Tabela Immobile**: Contém os dados dos imóveis cadastrados, como CEP, endereço, cidade, proprietário, entre outros.  
-     ![Diagrama ER](./Assets/Parte%201/img/Data/Table/ER_Immobile.png)
-
-   * **Tabela Rating**: Armazena as avaliações dos imóveis, incluindo informações como tempo de locação, recomendações e observações dos usuários.  
-     ![Diagrama ER](./Assets/Parte%201/img/Data/Table/ER_Rating.png)
-  
-   * **Tabela TypeExperience**: Armazena os tipos de experiência relacionados aos imóveis. Possui registros como **Excelente, Bom, Neutro, Ruim, Péssimo**.  
-     ![Tabela TypeExperience](./Assets/Parte%201/img/Data/Table/ER_TypeExperience.png)
-
-   * **Tabela TypeImmobile**: Armazena os tipos de imóvel disponíveis (ex.: Casa, Apartamento, Loja). Possui registros como **Casa, Apartamento, Loja**.  
-     ![Tabela TypeImmobile](./Assets/Parte%201/img/Data/Table/ER_TypeImmobile.png)
-
-   * **Tabela UserxImmobile**: Relaciona usuários aos imóveis, indicando propriedades e ocupação. São tabelas auxiliares que armazenam os tipos de experiência, tipos de imóvel, e a relação entre usuários e imóveis.  
-     ![Tabela UserxImmobile](./Assets/Parte%201/img/Data/Table/ER_UserxImmobile.png)
-
-   * **Tabela User**: Utiliza a entidade padrão do sistema OutSystems para armazenar informações dos usuários, como data de criação e última alteração.  
-     ![Tabela User](./Assets/Parte%201/img/Data/Table/ER_User.png)
-
-2. **Módulo AAR\_WEB**:
-   * Responsável pelo front-end e pelas telas da aplicação.
-   * Foi adicionado como dependência ao **AAR\_WEB**, como leitura, para garantir a segurança e centralizar toda a lógica de servidor no módulo **AAR\_Services**.
-   * No módulo web/reactive, podemos observar as abas completas, incluindo **Triggers, Interface, Logic, e Data**.  
+   - **Tabelas Criadas**:
+     - **Tabela Immobile**: Contém os dados dos imóveis cadastrados, como CEP, endereço, cidade, proprietário, entre outros.  
+       ![Diagrama ER](./Assets/Parte%201/img/Data/Table/ER_Immobile.png)
+     - **Tabela Rating**: Armazena as avaliações dos imóveis, incluindo informações como tempo de locação, recomendações e observações dos usuários.  
+       ![Diagrama ER](./Assets/Parte%201/img/Data/Table/ER_Rating.png)
+     - **Tabela TypeExperience**: Armazena os tipos de experiência relacionados aos imóveis. Possui registros como **Excelente, Bom, Neutro, Ruim, Péssimo**.  
+       ![Tabela TypeExperience](./Assets/Parte%201/img/Data/Table/ER_TypeExperience.png)
+     - **Tabela TypeImmobile**: Armazena os tipos de imóvel disponíveis (ex.: Casa, Apartamento, Loja). Possui registros como **Casa, Apartamento, Loja**.  
+       ![Tabela TypeImmobile](./Assets/Parte%201/img/Data/Table/ER_TypeImmobile.png)
+     - **Tabela UserxImmobile**: Relaciona usuários aos imóveis, indicando propriedades e ocupação.  
+       São tabelas auxiliares que armazenam os tipos de experiência, tipos de imóvel e a relação entre usuários e imóveis.  
+       ![Tabela UserxImmobile](./Assets/Parte%201/img/Data/Table/ER_UserxImmobile.png)
+     - **Tabela User**: Utiliza a entidade padrão do sistema OutSystems para armazenar informações dos usuários, como data de criação e última alteração.  
+       ![Tabela User](./Assets/Parte%201/img/Data/Table/ER_User.png)
+2. **Módulo AAR_WEB**:
+   - Responsável pelo front-end e pelas telas da aplicação.
+   - Foi adicionado como dependência ao **AAR_WEB**, com acesso somente leitura, para garantir a segurança e centralizar toda a lógica de servidor no módulo **AAR_Services**.
+   - No módulo web/reactive, é possível observar as abas completas, incluindo **Triggers, Interface, Logic, e Data**.  
      ![Estrutura do Módulo AAR_WEB](./Assets/Parte%201/img/Model/estrutura-aar-web.png)
 
 ### Conclusão
 
-Essa primeira etapa do projeto incluiu a configuração inicial dos módulos e a criação das entidades do banco de dados, além da definição da interface do usuário. Utilizamos uma abordagem modular que facilita a manutenção e a segurança dos dados, separando a lógica de servidor do front-end.
+Essa primeira etapa do projeto incluiu a configuração inicial dos módulos e a criação das entidades do banco de dados, além da definição da interface do usuário.  
+Utilizamos uma abordagem modular que facilita a manutenção e a segurança dos dados, separando a lógica de servidor do front-end.
 
-Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas no módulo **AAR\_WEB**, garantindo que todas as funcionalidades estejam alinhadas ao objetivo do projeto.
+Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas no módulo **AAR_WEB**, garantindo que todas as funcionalidades estejam alinhadas ao objetivo do projeto.
 
 -----------------------------------
 
 ## Documentação da 2ª Parte
 
-* Criação Tela de Login e Cadastro Imóveis e suas lógicas
+- Criação da Tela de Login e Cadastro de Imóveis e suas lógicas
 
 ### Tela de Login
 
-* Aqui podemos observar ao lado direito que, por padrão, a tela de Login da própria OutSystems vem com:  
+- Aqui podemos observar, à direita, que por padrão a tela de Login da própria OutSystems vem com:  
   ![Tela de Login](./Assets/Parte%202/img/Tela%20Login/Login01.png)
 
 #### 4 Variáveis Locais
 
-* **Username**: Consumida no Input **E-mail**  
+- **Username**: Consumida no Input **E-mail**  
   ![Var Username](./Assets/Parte%202/img/Tela%20Login/Var_Username.png)
-
-* **Password**: Consumida no Input **Senha**  
+- **Password**: Consumida no Input **Senha**  
   ![Var Password](./Assets/Parte%202/img/Tela%20Login/Var_Password.png)
-
-* **IsExecuting**: Utilizada para informar execução de algo na ClientAction **OnInitialize**  
+- **IsExecuting**: Utilizada para informar a execução de algo na ClientAction **OnInitialize**  
   ![Var IsExecuting](./Assets/Parte%202/img/Tela%20Login/Var_IsExecuting.png)
-
-* **Remember**: Consumida no Input de Checkbox **Lembrar-me**  
+- **Remember**: Consumida no Input de Checkbox **Lembrar-me**  
   ![Var Remember](./Assets/Parte%202/img/Tela%20Login/Var_Remember.png)
 
 #### 3 Client Actions
 
-* **ForgotPassword**: Para recuperar a senha  
+- **ForgotPassword**: Para recuperar a senha  
   ![ForgotPassword](./Assets/Parte%202/img/Tela%20Login/Client/ForgotPassword.png)
-
-* **Login**: Usado no botão **Entrar**  
+- **Login**: Usado no botão **Entrar**  
   ![Login](./Assets/Parte%202/img/Tela%20Login/Client/Login.png)
-
-  * A lógica Login recebendo o **Variavel local IsExecuting** como True, que será após clicar no botão  
+  - A lógica do Login recebe a variável local **IsExecuting** como True após o clique:  
     ![IsExecuting](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-IsExecuting.png)
-
-  * Após, segui para a ServerAction **DoLogin**, que é a ServerAction usada no Login
-    * Que receberá as variáveis locais: Username, Password, Remember
-    * A ServerAction é chamada para persistir os dados e saber se realmente salvou no banco de dados
-    * E chamar a ServerAction padrão de Login da OutSystems dentro de User  
+  - Em seguida, a ServerAction **DoLogin** é chamada:
+    - Recebe as variáveis locais: Username, Password, Remember.
+    - Persiste os dados e verifica se foram salvos no banco.
+    - Chama a ServerAction padrão de Login da OutSystems (dentro de User).  
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin.png)  
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin01.png)  
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin02.png)  
       ![Do Login](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin03.png)
-
-  * Após, irá **remover** uma mensagem de feedback ao Logar
-    * Ou seja, será removida qualquer possível mensagem que apareça após realizar o login.
-
-  * Após, **redirecionará**
-    * O usuário será redirecionado para a tela principal  
-      ![Redirect](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin03.png)
-
-* **OnInitialize**:
-  * Usado para realizar alguma ação após o carregamento da tela
-    * Como padrão, no caso da imagem abaixo  
-      ![OnInitialize](./Assets/Parte%202/img/Tela%20Login/Client/OnInitialize01.png)
-
-  * Usado para receber a variável local "IsExecuting" para implementar a ação
-    * Nesse caso, o padrão está como False, ou seja, quando iniciar esta tela, por padrão, não inicialize nenhuma ação  
-      ![OnInitialize](./Assets/Parte%202/img/Tela%20Login/Client/OnInitialize.png)
+  - Após, remove uma mensagem de feedback ao logar.
+  - Por fim, redireciona o usuário para a tela principal:  
+    ![Redirect](./Assets/Parte%202/img/Tela%20Login/Client/Logic-Login-Server_DoLogin03.png)
+- **OnInitialize**:
+  - Executa ações após o carregamento da tela (como na imagem abaixo):  
+    ![OnInitialize](./Assets/Parte%202/img/Tela%20Login/Client/OnInitialize01.png)
+  - Utiliza a variável local "IsExecuting" (padrão False, sem ação inicial).  
+    ![OnInitialize](./Assets/Parte%202/img/Tela%20Login/Client/OnInitialize.png)
 
 -----------------------------------
 
-### Mudando as ações de Autentication para o caminho correto
+### Mudando as ações de Autenticação para o caminho correto
 
-* Isso se dá porque a lógica de servidor deve ficar no módulo **ARR_Service**
-  * Então, basta recortar da **ARR_WEB** e colocar na **AAR_Service**, aba **Logic**, e **Publicar**  
+- A lógica de servidor deve residir no módulo **ARR_Service**:
+  - Recorte a ação da **ARR_WEB** e cole na **AAR_Service**, na aba **Logic**, e publique.  
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin.png)
-
-  * Deve deixar público antes de publicar, dessa forma podemos acessar no outro módulo as mesmas  
+  - Torne a ação pública antes de publicar, para que seja acessível de outros módulos.  
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin01.png)
-
-  * Agora temos que apontar
-    * Achamos as dependências, buscamos o módulo, clicamos, adicionamos e "Apply"
-    * Após aplicar, os erros irão sumir  
-      ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin02.png)
+  - Aponte as dependências (busque o módulo, clique, adicione e “Apply”).  
+    Os erros desaparecerão:  
+    ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Login/Server/ServerAction_DoLogin02.png)
 
 -----------------------------------
 
@@ -190,974 +159,585 @@ Na próxima etapa, vamos nos concentrar em finalizar a estruturação das telas 
 
 ### Módulo ARR_WEB
 
-![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela.png)
-
-* Vamos criar a partir da ABA **Data** e arrastamos para o nosso **MainFlow**
-  * Criamos então arrastando as duas telas  
-  ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela01.png)
-
-  * **Immobiles**: Que é a tela de Listagem  
+- Exemplo de tela:
+  ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela.png)
+- A partir da aba **Data**, arraste para o **MainFlow**:
+  - As duas telas são criadas:  
+    ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela01.png)
+  - **Immobiles**: Tela de Listagem  
     ![Server Action DoLogin](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela02.png)
+  - **ImmobileDetail**: Tela de registro
+    - Remova o IF padrão (que indica "Cadastrar" ou "Editar") e substitua por uma Expression:
+      - Se ImmobileId for nulo, exiba "Cadastrar"; senão, "Editar" concatenado com "Imóvel":
 
-  * **ImmobileDetail**: Que é a de registro
-    * Retiramos o **IF** que vem por padrão, que mostra se **true** Cadastrar ou **else** Editar, e colocamos no lugar uma **Expression**, que tem a seguinte validação:
-      * SE o ImmobileId for igual a vazio ou se ele não existe, Cadastrar, se não, Editar e concatenar com Imóvel.
+        ```javascript
+        If(ImmobileId = NullIdentifier(), "Cadastrar", "Editar") + " Imóvel"
+        ```
 
-      ```javascript
-      If(ImmobileId = NullIdentifier(),"Cadastrar","Editar")+" Imóvel"
-      ```
-
-    * Vamos tirar agora o Form de dentro da Column1, para que ele expanda  
+    - Remova o Form dentro da Column1 para que ele expanda:  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela03.png)  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela04.png)
-
-    * Arrastando o **Adaptive/Columns2** para dentro do **Form** e dividindo as colunas  
+    - Arraste o **Adaptive/Columns2** para dentro do Form, dividindo as colunas:  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela05.png)
-
-    * Ajustado ficou assim:  
+    - O layout ajustado fica assim:  
       ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela06.png)
-
-    * Foi trocado **checkbox** por **radioGroup**, dessa forma ficou mais visual
-      * O **Label** deixamos como **None** para não pegar nenhuma propriedade, pois nesse caso é um **True** ou **False** no Radio, não sendo necessário amarrar ao Label
-      * Alteramos também o lado dos botões  
-      ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela07.png)
-
-    * Verificando a **ClientAction** **SaveDetail** da tela **ImmobileDetail** se os dados estão persistindo corretamente  
+    - Troque o checkbox por radioGroup para melhor visualização:
+      - Configure o Label como None (não vinculado) e ajuste a posição dos botões.  
+        ![CI_Criando Tela](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/CI_Criando%20Tela07.png)
+    - Verifique a ClientAction **SaveDetail** para a persistência dos dados:  
       ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client/SaveDetail.png)
-
-      * Aqui ainda não está fazendo a persistência dos dados  
+      - Nota: A persistência ainda não está ativa:  
         ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client/SaveDetail01.png)
-
-      * Mostrando como a tela está ficando visualmente  
+      - Visualmente, a tela ficou assim:  
         ![CI_SaveDetail](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Client/SaveDetail02.png)
 
 ### Módulo: ARR_Services
 
 #### Tela Cadastrar Imóvel e Editar Imóvel
 
-* Persistindo os dados da Tela: Cadastrar Imóvel
-  * Criamos uma pasta somente com o nome da Tabela que criamos para a tela
-  * Aqui vamos criar a ação que irá persistir os dados
+- Persistência dos dados na Tela "Cadastrar Imóvel":
+  - Crie uma pasta com o nome da Tabela correspondente.
+  - Crie a ação para persistir os dados.
 
-* Server Action: **Immobile_CreateOrUpdate**  
+- **Server Action: Immobile_CreateOrUpdate**  
   ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate.png)
-
-  * A Server Action vai estar esperando:
-    * **Parâmetro de Entrada**: **Immobile**
-      * No caso, quero persistir a minha **Tabela Immobile**
-      * Dessa forma foi criada uma ação dentro do servidor chamada **Immobile_CreateOrUpdate**
-      * Para atualizar ou criar, precisamos da estrutura dela, por isso o **parâmetro de entrada** > **Immobile**
-    * **Parâmetro de Saída**: **Output**
-      * Agora precisamos de um parâmetro de saída para retornar as informações
-      * Dessa forma, optamos por criar uma **Structure**  
+  - A ação espera:
+    - **Parâmetro de Entrada**: Immobile  
+      (Para persistir a Tabela Immobile, use o parâmetro Immobile.)
+    - **Parâmetro de Saída**: Output  
+      - Crie uma Structure para o Output:  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate01.png)
-
-      * Criando Atributos para a **Structure Output**:
-        * **Success**: Retornará se foi sucesso ou não, com valor padrão como **false**  
+      - Defina os atributos:
+        - Success (padrão false)  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate03.png)
-
-        * **Message**: De acordo com o retorno  
+        - Message  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate04.png)
-
-        * **AccessKey**  
+        - AccessKey  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate05.png)
-
-        * **Id**: Será **Long Integer**, porque não é um retorno definido de uma tela ou tabela; será utilizado como atributo de retorno em várias Server Actions  
+        - Id (Long Integer)  
           ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate06.png)
-
-      * Uma vez criada a **Structure**, podemos criar o **Parâmetro de Saída**:  
+      - Após criar a Structure, defina o Parâmetro de Saída:  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate07.png)
-
-  * Criando o Fluxo da **Server Side** (Server Action)  
+  - Crie o fluxo da ServerAction:  
     ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate08.png)
-
-  * **1ª Coisa**: Validar se estou **Criado Por** ou **Criado Como**
-    * Você é igual a **NullIdentifier()**  
+  - **Validação Inicial:**  
+    - Verifique se o usuário é igual a NullIdentifier():  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate09.png)
-
-  * SE **Immobile.Id** = **NullIdentifier()** [Novo registro?]
-    * SE Sim: **CreateImmobile**
-    * SE Não: **UpdateImmobile**  
+  - Se **Immobile.Id** for nulo (novo registro):
+    - Se Sim: Execute **CreateImmobile**
+    - Se Não: Execute **UpdateImmobile**  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate10.png)
-
-    * Caso Sim: Temos que preencher, antes de persistir os dados, os campos **Criado Por (CreatedBy)** e **Criado Como (CreatedAt)**
+    - Caso seja um novo registro, preencha os campos **CreatedBy** e **CreatedAt** antes de persistir:  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate11.png)
-
-    * Como é somente um registro pontual, posso vir no **Source**, tirar o **Immobile** e adicionar os campos pontualmente neste momento.
+    - No Source, remova o Immobile e adicione os campos individualmente:  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate12.png)
-
-    * > ⚠️ **ATENÇÃO**: Se atente aos campos, sempre colocamos o que vem do parâmetro de **ENTRADA** aqui.
-      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate13.png)
-      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate14.png)
+    - > ⚠️ **ATENÇÃO:** Utilize os valores do parâmetro de entrada para os campos, exceto **CreatedBy** (use GetUserId()) e **CreatedAt** (use CurrDateTime()).  
+      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate13.png)  
+      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate14.png)  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate15.png)
-
-    * São os dois únicos campos que não vão selecionar a opção que vem do parâmetro de entrada.
-      * Aqui em **CreatedBy**: Passamos uma função chamada:
-        * **GetUserId()**:
-          * Ela traz o ID do usuário logado atualmente na aplicação
-          * Salvando o Id desse usuário como criador
-      * Aqui também temos o **CreatedAt**: Passamos uma função chamada:
-        * **CurrDateTime()**:
-          * Ela pega a hora atual e persiste na minha tabela
+    - Os campos **CreatedBy** e **CreatedAt** são os únicos que não usam o valor do parâmetro de entrada.
+      - **CreatedBy:** Função GetUserId()
+      - **CreatedAt:** Função CurrDateTime()  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate16.png)
-
-    * Uma observação: o campo **CreatedAt**, anteriormente, passamos o **CurrDateTime()** no próprio atributo da tabela. Dessa forma, não há necessidade de passar algo aqui, então ficará assim:
-      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate17.png)
-      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate18.png)
-
-  * **Observação Interessante**:
-    * Podemos criar a validação de criação ou update de duas formas e utilizamos um exemplo diferente em cada.
-    * Em **UpdateImmobile**:
-      * Escolhemos atribuir no **Source** diretamente apenas o **Parâmetro de Entrada** PAI
-      * Dessa forma, todos os atributos do **Source** vêm junto
+    - Observação:
+      - Em **UpdateImmobile**: Atribua diretamente o parâmetro de entrada.  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate19.png)
-
-    * Em **CreateImmobile**:
-      * Escolhemos tirar o parâmetro PAI (**Immobile**) e adicionamos um por um e estilizamos o atributo **CreateBy**, passando a função **GetUserId()**
+      - Em **CreateImmobile**: Atribua os campos individualmente, estilizando o CreatedBy com GetUserId().  
         ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate20.png)
-
-  * Começando a inserir os parâmetros de saída
-    * **1º**: Criamos um **Assign** para o **CreateImmobile**
-      * Adicionamos os parâmetros de entrada e seus respectivos valores
-      * A diferença é o **Output.Id**, que recebe o parâmetro do Id da função **CreateImmobile**
+  - Atribuição dos parâmetros de saída:
+    - **1º:** Crie um Assign para o CreateImmobile, onde Output.Id recebe o ID do CreateImmobile.  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate20.1.png)
-
-    * **2º**: Criamos um **Assign** para o **UpdateImmobile**
-      * Adicionamos os parâmetros de entrada e seus respectivos valores
-      * A diferença é o **Output.Id**, que recebe o próprio atributo **Id** dele, pois já é um user, dessa forma, atualizando-o
-      * Porque nesse momento não estou criando um novo, estou simplesmente atualizando-o
-      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate22.png)
+    - **2º:** Crie um Assign para o UpdateImmobile, onde Output.Id recebe o ID do registro atualizado.  
+      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate22.png)  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate23.png)
-
-* >❗ **EXCEÇÃO**: pois esses **Assign** não vão dar False até aqui ou ❌ **ERRO** até aqui.
-
-  * Aplicando:
-    * Adicionar Exceção ao Fluxo
-      * Decidimos colocar Todas as Exceptions
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate24.png)
-
-    * Preenchendo o **Assign**:
-      * **Output.Success = False**
-        * Para englobar erros que saem fora do contexto ao lado
-      * **Output.Message = AllExceptions.ExceptionMessage**
-        * Recebe a própria mensagem da **AllExceptions > ExceptionMessage** de forma automática
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate25.png)
-
-    * **AllExceptions**, a exceção CASO for acionada:
-      * Significa que houve um erro e não conseguiu completar o fluxo
-      * Caso observe, o **Abort Transcription** está **Yes**
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate26.png)
-
------------------------------------
+- >❗ **EXCEÇÃO:**  
+  - Adicione uma exceção ao fluxo, escolhendo "Todas as Exceptions":  
+    ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate24.png)
+  - Em um Assign, configure:
+    - Output.Success = False
+    - Output.Message = AllExceptions.ExceptionMessage  
+    ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate25.png)
+  - Na exceção AllExceptions, o fluxo aborta (Abort Transcription = Yes).  
+    ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate26.png)
 
 ### Módulo: ARR_WEB
 
-* Começando a retirar o que não vamos usar
-  * Neste caso, excluímos o Aggregate **GetUsers**
-    ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate27.png)
-    ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate28.png)
-
-* Criando o fluxo da **Client Action: SaveDetail**
-  * Primeiro será validado se o formulário é **False**
+- Remova os elementos não utilizados:
+  - Exclua o Aggregate **GetUsers**:  
+    - ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate27.png)  
+    - ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate28.png)
+- Crie o fluxo da **Client Action: SaveDetail**:
+  - Valide se o formulário é inválido (False):  
     ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate29.png)
-
-  * Se o **Form** for **True**:
-    * Irá chamar a **ServerAction** criada **Immobile_CreateOrUpdate**
-      * Nela, receberá em **Action > Immobile** a listagem criada como parâmetro de entrada
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate30.png)
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate31.png)
-
-    * **IF** que valida se a persistência dos dados foi realizada com sucesso ou não:
-      * **❌ SE Não**: Receberá uma mensagem de ❌ **ERRO** pegando o parâmetro de saída
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate32.png)
-
-      * **✅ SE Sim**: Receberá uma mensagem de ✅ **SUCESSO** do parâmetro de saída
-        ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate35.png)
-
-    * Finaliza com 🔄 **REDIRECT** para a tela 🏠 **Immobiles** de listagem
+  - Se válido, chame a ServerAction Immobile_CreateOrUpdate (passando o parâmetro Immobile):  
+    - ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate30.png)  
+    - ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate31.png)
+  - Utilize um IF para verificar a persistência:
+    - Se falso, exiba mensagem de ERRO (Output.Message):  
+      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate32.png)
+    - Se verdadeiro, exiba mensagem de SUCESSO e redirecione para a tela de listagem **Immobiles**:  
+      ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate35.png)
+    - Finalize com REDIRECT:  
       ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate36.png)
-
-* Validando em tela se os dados estão persistindo:
-  * Está ok até aqui, mas o **CEP** ainda está fictício, faremos correções e usaremos uma API para o **CEP**
-    ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate37.png)
+- Valide em tela a persistência (observação: o CEP ainda está fictício; usaremos uma API para o CEP):  
+  ![ServerAction  Immobile_CreateOrUpdate](./Assets/Parte%202/img/Tela%20Cadastro%20de%20Imoveis/Server/Immobile_CreateOrUpdate37.png)
 
 ### PRÓXIMA ETAPA
 
-* ✨ **IMPLEMENTANDO O CEP**:
-  * 🛠️ Criando ação **OnChange** para quando o usuário clicar no campo **CEP**.
-  * ✏️ Quando começar a alterar o campo **CEP**, cairá em um evento de **OnChange**:
-    * 🌐 Onde chama um serviço. Se aquele **CEP** existe:
-      * 🏢 SE existir, ele vai preencher automaticamente o logradouro, bairro e cidade.
+- ✨ **IMPLEMENTANDO O CEP**:
+  - 🛠️ Crie uma ação **OnChange** para o campo **CEP**.
+  - ✏️ Quando o campo **CEP** for alterado, um evento OnChange chamará um serviço que, se o CEP existir, preenche automaticamente logradouro, bairro e cidade.
 
 -----------------------------------
 
 ## Documentação da 3ª Parte
 
-## Criando Telas e lógica de Login e Cadastro de Imoveis
-
-* Ajustes de labels
-* Utilizando componente da Forge (api)
-* Deixando aplicação mais segura com AccessKey
-* Eventos OnChange
-* Evento OnScroolingEnd
-* Gerando AccessKey randômico
-* Utilizando Widget List ao invés de TableList
-* Join entre tabelas
-* Tela Meus imóveis
-* Tela Avaliar Imóveis
+- Criando Telas e lógica de Login e Cadastro de Imóveis:
+  - Ajustes de labels
+  - Utilização de componente da Forge (api)
+  - Segurança da aplicação com AccessKey
+  - Eventos OnChange
+  - Evento OnScroolingEnd
+  - Geração de AccessKey randômico
+  - Utilização de Widget List ao invés de TableList
+  - Join entre tabelas
+  - Tela Meus Imóveis
+  - Tela Avaliar Imóveis
 
 ## Start
 
 ## Gerando AccessKey randômico
 
-* Até o momento SE para edição ou ações que é mostrada na URL, está esposto o ID passado isso trás vulnerabilidade e brechas para ser burlado o sistema
-* Por médida de segurança, vamos colocar o AccessKey que mascara esse ID, dando mais segurança e evitando contra vunerabilidades na aplicação
-
+- Atualmente, a edição ou ações exibidas na URL expõem o ID, o que gera vulnerabilidade.
+- Para segurança, será utilizado o AccessKey, que mascara o ID.  
   ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey.png)
 
 ### Access Key ARR_SERVICES
 
-* Iremos iniciar as alterações no servidor, conforme verificamos na imagem abaixo até o momento temos a ServerAction (**Immobile_CreateOrUpdate**) que possui um parametro de entrada que é a propria tabela Immobile e o parametro de saida é o Output (*Success, Message, AccessKey, Id*)
-
-* Porém o nosso (**CreateImmobile**) no fluxo não está recebendo ainda o **AccesKey**, porque não foi atribuido ainda a nossa tabela.
-
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey01.png)
+- No módulo Services, a ServerAction (**Immobile_CreateOrUpdate**) possui no Output os parâmetros (*Success, Message, AccessKey, Id*).
+- Porém, o fluxo (**CreateImmobile**) ainda não recebe o **AccessKey** pois não foi atribuído à tabela.  
+  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey01.png)
 
 #### Criando o Access Key
 
-* 1º Temos que criar um atributo na tabela Immobile na aba **Data**
-  * Esse atributo irá com o tipo **Text** porque receberá uma **HASH**
-
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey02.png)
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey03.png)
-
-* 2º Uma vez criado o atributo, retornamos para o nosso fluxo da ServerAction (**Immobile_CreateOrUpdate**)
-  * Na (**CreateImmobile**) Já estará disponivel a AccessKey
+- 1º Crie um atributo na tabela Immobile na aba **Data**:
+  - O atributo deve ser do tipo **Text** (para receber uma HASH).  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey02.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey03.png)
+- 2º No fluxo da ServerAction (**Immobile_CreateOrUpdate**), na ação **CreateImmobile**, a AccessKey estará disponível.
   ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey04.png)
-  * E agora irei pedir para toda vez que criar um registro **novo** preencher a **Access Key**
-
-* 3º Usando uma função da Systems padrão para configurar a AccessKey
-  * Dessa forma é necessário busca-la nas dependências, para isso
-    * Clicamos em dependências e atribuimos a ServerAction (**GenerateGuid**)
-    * Toda vez que esta função for chamada será retornada uma hash pelo parametro de saida(retorno) da ServerAction do sistema
+- 3º Utilize uma função do sistema para gerar a AccessKey:
+  - Nas dependências, adicione a ServerAction (**GenerateGuid**).  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey05.png)
-
-* 4º Uma vez que adicionamos a  ServerAction (**GenerateGuid**)
-  * Podmeos agora retornar ao fluxo da ServerAction (**Immobile_CreateOrUpdate**) e atribuirmos a função ao atributo AccesKey do parametro de entrada que adicionamos a tabela Immobile.
+- 4º Retorne ao fluxo da ServerAction (**Immobile_CreateOrUpdate**) e atribua a função ao atributo AccessKey do Immobile.  
   ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey06.png)
-  * Agora No fluxo, toda vez que crio um Id novo ou imovel ele gerará um AccessKey
-    * Posteriormente iremos para ARR_WEB onde será trocado na url ao em vez do ID a nossa AccessKey já com a hash.
-
-* 5º Publicar e irmos então para ARR_WEB
+  - Assim, cada novo registro gerará um AccessKey para ser utilizado no ARR_WEB no lugar do ID.
+- 5º Publique e vá para o ARR_WEB.
 
 ### Access Key ARR_WEB
 
-* Uma vez que finalizamos a parte do **ARR_SERVICES** temos que adicionar essas novas atualizaçãoes a nossa dependencia no ARR_WEB
-  * Ao abrir já verificamos o ARR_Services flegado, dessa forma apenas clicamos no botão *Refresh all* e após *Apply* e publicamos
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey07.png)
-
-* 1º A tela **ImmobileDetail** está esperando como parametro de entrada um **Immobile Identifier** é esse valor que retorna o ID do usuário, é aqui que vamos tratar a vulnerabilidade com **AccesKey**
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey08.png)
-* Iremos substituir o parametro de entrada para o AccessKey
-  * Seu *DataType* será *Text*, pois agora será esperado uma **hash** e não mais um ID
-  * Não será necessário ser mandatorio, pois não tem a necessidade de mostrar o parametro vazio, somente no Update que será passado.
-  * Ainda terei que alterar o GET onde pego essas informações e na minha lista
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey09.png)
-
-* 2º Alterando nosso **GetImmobileBy**
-  * Clicando nele já deparamos com um eror informando que estava sendo feito uma comparação de Identificador com Data types diferentes isso, porque mudamos o parametro de entrada de Id para Access Key, dessa forma temos que alterar também no nosso filtro do Get, como na imagem abaixo.
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey10.png)
-
-* 3º Alterando o filtro do GetImmobileBy
-  * Quando falamos que estamos buscando um | Immobile.AccessKey = AccessKey | ou seja uma busca unica o MaxRecord deve ser de 1 registro e não o padrão de 50.
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey11.png)
-
-* 4º Por padrão as linhas de registros do nosso **Immobile List** ao clicar vai para página de edição daquele registro especifico, porém mudamos o nosso parametro de entrada para Access Key, dessa forma aqui também deve ser alterado.
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey12.png)
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey13.png)
-![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey14.png)
+- No ARR_WEB, atualize as dependências (Refresh all → Apply → Publicar).  
+  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey07.png)
+- 1º A tela **ImmobileDetail** espera um parâmetro de entrada (**Immobile Identifier**); substitua-o por **AccessKey**:
+  - DataType: **Text** (para receber uma hash).
+  - Não precisa ser obrigatório.
+  - Também altere o GET e a lista.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey08.png)
+- 2º Altere o **GetImmobileBy**:
+  - O filtro deve comparar **Immobile.AccessKey** com o parâmetro **AccessKey**.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey10.png)
+- 3º No filtro do **GetImmobileBy**, defina o MaxRecord como 1 (busca única).  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey11.png)
+- 4º Na lista de imóveis, altere o parâmetro de entrada para **AccessKey**.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey12.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey13.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/AccessKey/AccessKey14.png)
 
 -----------------------------------
 
 ## Utilizando componente da Forge (api) CEP
 
-* ✨ **IMPLEMENTANDO O CEP**:
-  * 🛠️ Criando ação **OnChange** para quando o usuário clicar no campo **CEP**.
-  * ✏️ Quando começar a alterar o campo **CEP**, cairá em um evento de **OnChange**:
-    * 🌐 Onde chama um serviço. Se aquele **CEP** existe:
-      * 🏢 SE existir, ele vai preencher automaticamente o logradouro, bairro e cidade.
-      * 🚫 SE não existir, ele vai mostrar uma mensagem de erro.
+- ✨ **IMPLEMENTANDO O CEP**:
+  - 🛠️ Crie uma ação **OnChange** para o campo **CEP**.
+  - ✏️ Ao alterar o campo **CEP**, o evento OnChange chamará um serviço que:
+    - Se o CEP existir, preenche logradouro, bairro e cidade automaticamente.
+    - Caso contrário, exibe uma mensagem de erro.
 
 ### Baixando o Componente na Forge (ViaCEP)
 
-* Baixar o componente viaCEP - Endereços
-  * Clicar na ABA **Forge** e procurar por **ViaCEP**
-  * Uma vez encontrada apenas instale no studio
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP.png)
+- Baixe o componente ViaCEP - Endereços:
+  - Na aba **Forge**, procure por **ViaCEP** e instale-o no Studio.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP.png)
 
 ### Aplicando ARR_WEB
 
-* 1º Esse componente é uma aplicaçõa separada o ViaCEP, dessa forma eu preciso referenciar ele dentro do meu código como eu faço com o ARR_Service
-  * Clicando no plug de tomada e adicionando ele ao meu projeto
-  * Ele possui uma ServerAction (**CEP**) com um parametro de entrada (CEP) e um parametro de saída (Output)
-    * O Output possui um campo de retorno (CEP), através de uma **Structure** e campos de retorno (CEP, Logradouro, Complemento, Bairro, Localidade, Uf, Ibge, ...,Erro)
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP01.png)
-  * Após aplicar já o verei na ABA **Logic**
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP02.png)
+- 1º O componente ViaCEP é uma aplicação separada; adicione-o como dependência ao ARR_WEB.
+  - Ele possui uma ServerAction (**CEP**) que recebe um parâmetro (CEP) e retorna um Output com os dados do endereço.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP01.png)
+  - Após aplicar, ele aparecerá na aba **Logic**.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP02.png)
+- 2º Na tela, no campo Input **CEP**, crie uma ação OnChange que acione uma trigger para chamar o serviço CEP.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP03.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP04.png)
+- 3º Aplicando a lógica:
+  - Adicione um IF: se o comprimento do CEP for maior que 7 (ou seja, 8 caracteres ou mais):
 
-* 2º Trabalhando em cima da tela
+    ```js
+    Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
+    ```
 
-  * Indo no meu campo Input **CEP** criarei uma ação OnChange que quando esse campo for alterado, irá rodar uma trigger e dentro dessa ação vai estar a ação do CEP
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP03.png)
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP04.png)
-
-* 3º Aplicando a lógica:
-  * Add um **IF**, SE o input CEP > 7, ou seja se ele tiver 8 caracteres ou mais
-	```Js
-	Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
-	```
-    * SE False ele finaliza, pois tem menos de 8 caracteres
-    * Se True chamo minha API de serviço **ViaCEP** e verifico se eu consigo pegar alguma informação baseado no CEP digitado no Input
-
-  
+  - Se falso, finalize; se verdadeiro, chame a API ViaCEP para obter os dados do CEP.
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP05.png)
-
-    * SE for satisfeita a condição ele irá chamar o ViaCEP
-      * Para isso basta apenas eu arrastar da ABA Logic > Via_Services > Via_CEP : CEP
-      * E ligar na minha condição e assim ele irá chamar o serviço e pegar as informações do CEP
-    * Na parte de parametros como na imagem ira esperar um CEP, aqui e o mesmo que eu coloquei na condição então seleciono ele.
-      * Aqui até o momento ele está referenciando no serviço de CEP mais ainda não está fazendo nada
-
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP06.png)
+  - Arraste a ação **Via_CEP : CEP** da aba Logic, configure os parâmetros e conecte à condição.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP06.png)  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP07.png)
-
-    * Agora deve configurar os campos de Input para receber os valores automaticamente do meu serviço ViaCEP
-      * **1º** Preciso validar se ele recebeu as informações desse serviço (1º IF)
-        * SE Cep > 7 = FALSE (PARA)
-        * SE Cep > 7 = TRUE ele chama meu serviço **ViaCEP**
-          * onde é esperado como parametro um CEP, neste caso usamos o mesmo da condição (If)
-        ```Js
-        Length(GetImmobileByAccessKey.List.Current.Immobile.CEP) > 7
-        ```
-        .....
-        * **2º** validamos **O retorno do serviço CEP**  (2º IF)
-        ```Js
-        CEP.Output.Erro = True
-        ```
-          * SE o retorno do serviço CEP.Output.Erro = True (PARA)
-          * SE o retorno do serviço CEP.Output.Erro = FALSE
-            * Ou seja se ele deu erro ele irá chamar o Asign
-        ....
-          * **3º** Preenchemos o **Assign**
-            * Onde o valor do atributo da **GetImmobileByAccessesKey** recebe os Outputs da estrutura do serviço CEP.Output
-
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP09.png)
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP10.png)
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP11.png)
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP12.png)
-
-    * **Digitando o CEP** no campo Input agora ele aciona meu serviõ viaCEP, valida se é maior do que 7 caracteres e caso seja satisfeito ele retorna preenchendo automaticamente os campos [logradouro, bairro, cidade, complemento(caso encontre)]
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP09.png)
-
-    * **4º** Limpando campos caso haja alteração no Input **CEP**
-      * Isso é necessário pois se alterarmos o campo do CEP novamente ele precisa ter uma ação que limpe os campos caso ele não ache o CEP ou seja SE a busca do CEP.Output.Erro for True ele limpa os campos
-      * Dessa forma criei um asign recebendo os atributos porém com valor vazio
+  - Configure os campos de Input para receber os valores do Output do CEP:
+    - 1º Valide se o serviço retornou dados.
+    - 2º Se CEP.Output.Erro for True, finalize.
+    - 3º Caso contrário, use um Assign para preencher os campos de endereço.  
+      ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP09.png)  
+      ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP10.png)  
+      ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP11.png)  
+      ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP12.png)
+    - 4º Crie um Assign para limpar os campos caso haja alteração no CEP e o serviço retorne erro.  
       ![Tela de Login](./Assets/Parte%203/img/Tela%20Editar%20Imovel/API%20ViaCEP/ViaCEP13.png)
-
-    ⚠️**APRENDIZADO:** A partir de **Onchange** eu consigo buscar qualquer informação ou fazer qualquer tipo de manipulação dentro da minha aplicação, baseado em informações que eu tenha preenchido anteriormente.
-    * Nessa aplicação foi a partir deu preencher um campo o CEP em preenchi automaticamente varios outros.
-    * Serve para aplicar de diversas formas e diversas situações
+    - ⚠️ **APRENDIZADO:** O OnChange permite buscar e manipular dados com base no valor preenchido.
 
 -----------------------------------
 
 ## Tela Meus Imóveis
 
-* Tela de Listagem de Imóveis
-  * Iniciando assim, vamos reaproveitar a mesma para criar a tela de listagem de imóveis
-
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis01.png)
-
-* Realizando a alteraçõa inicial mais proximo do nosso template
-  * **1º** Alteramos o nome da página
-  * **2º** Retiramos o link de Casa pois será no logradouro para edição
-  * **3º** Editamos as posições das colunas
-  * **4º** Renomeamos o botão de criação para **Cadastrar Imóvel**
-  * **5º** Adiconamos o link de edição na coluna **Logradouro**
-  * **6º** Adiconamos a coluna de **Ação** com ícone de **Delete**
-  * **7º** Adiconamos a coluna de **Cadastro**
-
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis02.png)
-
-* configurar as **Expressions** para receber os valores das colunas.
-  * **1º** **Avaliações** - Recebe o valor do atributo correto
-    * A ideia dessa coluna e realizar a somatoria de avaliações do endereço especifico.
-    * Então terei que alterar meu Get(Aggregate) para realizar essa soma.
-    * Começando a alterar o **GetImoveis**(Aggregate)
-      * Criando um join para chamar a tabela avaliações
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis03.png)
-      * Foi feito o Join e já está relacionado
-        * Ao apertar **Source** e escolher a tabela já é feita a relação de tabelas
-        * Uma coisa importantes a relação de ligação está como **With or without** que significa que ele buscara tanta os registros de que tenha **Avaliação** e o que não tem.
-        * **With or without** Busca ambos registros com ou sem
-        * **With** Busca registro preenchidos
-        * **Only With** Busca apenas os registros que tenham a avaliação
-
-        * Para realizar a avaliação lá na frente e verificar corretamente os dados da nossa listagem com a avaliação sem repetir registros realizamos o **group by** e o **count**
-        * **Group by** agrupamos os dados de CEP, Id:Imomoble, Street, Street_Number, CreatedAt,Label:TypeMobile, AccessKey
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis06.png)
-        * **Count** é para contar a quantidade de registros agrupados
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis05.png)
-        * Olha que interessante uma vez que eu realizei o agrupamento e o count ele agora deixou de olhar para toda a estrutura e nosso Get agora mostra apenas os campos agrupados.
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis08.png)
-        * Também retiramos a reordenação de cada coluna
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis09.png)
-        * Agora vamos abrir as expresison e substituir pelos valores do novo Get os cmapos dos agrupamentos
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis10.png)
-        * **Até o momento ficou assim**
-      ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis11.png)
-* Conseguimos finalizar a primeira parte dessa tela agora vamos realizar alguns ajustes:
-  * **1º** Vamos ajustar a formatação do **Criado em** com a função da OutSystems **DateFormate()**
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis12.png)
-  * **2º** Vamos ajustar a ação do nosso **Search**
-    * Ocorreu que o campo de busca nao estava retornando os registro como veio criado, porque estava apenas pegando o CEP, como temos ainda somente dois registros  de CEP, vamos alterar para pegar o CEP e o Logradouro
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis13.png)
-
-* Criando a Ação **DELETE**
-  * 1º Criamos uma *ClientAction* no modulo **ARR_WEB** vazia por enquanto
-  * 2º Vamos criar a **ServerAction** no modulo **ARR_Server**
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete01.png)
-  * 3º Vou na ABA **Data** acho a ação de Delete da tabela Immobile e arrasto para minha **ServerAction** é adicionio o meu parametro de entrada ID para o Crud de Delete.
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete02.png)
-  * 4º Passo meu **Output** ou seja a saida desse retorno do CRUD.
-    * Ambos os fluxos não passamos o ID nem o AccessKey de Output
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete03.png)
-  * 5º Passo criar o **Fluxo de Exceção**
-    * Nele podemos ver que o nosso fluxo de **TRUE** está ok e nosso **FALSE**
-      * Recebe uma **AllExpetions** que terá um **Asign** de *Output.Succes = True* e *Output.Message = AllExceptions.ExceptionMessage* ou seja caso der erro é informado erro pela **AllExpetions**.
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete05.png)
-  * 6º Voltamos para o Mudulo **AAR_WEB** para agora receber o retorno da **ServerAction**, realizamos o Fluxo onde
-    * 1. Chamamos a **ServerAction immobile_Delete** que passa como parametro o nosso Id.
-    * 2. **SE** a **ServerAction** returnou **TRUE**, Recebera uma mensagem de **SUCESSO** **SE NÃO** recebera uma mensagem de **ERRO**, ambas do nosso retorno do **Output.Message da ServerAction** é após encerrerá.
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete01.png)
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete02.png)
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete03.png)
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete04.png)
+- Tela de Listagem de Imóveis:
+  - Inicialmente, reutilize a tela para criar a listagem de imóveis.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis01.png)
+- Ajustes iniciais (para se aproximar do template):
+  - 1º Altere o nome da página.
+  - 2º Remova o link "Casa" (será usado no logradouro para edição).
+  - 3º Edite as posições das colunas.
+  - 4º Renomeie o botão para **Cadastrar Imóvel**.
+  - 5º Adicione o link de edição na coluna **Logradouro**.
+  - 6º Adicione a coluna de **Ação** com ícone de **Delete**.
+  - 7º Adicione a coluna de **Cadastro**.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis02.png)
+- Configuração das **Expressions**:
+  - 1º **Avaliações**: exibe a soma das avaliações do endereço.
+    - Altere o Aggregate (GetImoveis) para fazer o join com a tabela de avaliações e agrupar os dados:
+      - Crie um join:  
+        ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis03.png)
+      - O join pode ser configurado como **With or Without** para trazer registros com ou sem avaliação.
+      - Utilize **Group by** e **Count** para agrupar e contar:
+        - Group by (ex.: CEP, Id, Street, Street_Number, CreatedAt, TypeMobile, AccessKey)  
+          ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis06.png)
+        - Count dos registros:  
+          ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis05.png)
+      - O Aggregate passa a mostrar apenas os campos agrupados:  
+        ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis08.png)
+      - Retire a reordenação das colunas:  
+        ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis09.png)
+      - Atualize as Expressions com os novos valores do Aggregate:  
+        ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis10.png)
+      - Resultado final:  
+        ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis11.png)
+  - 2º Ajuste a formatação do campo **Criado em** utilizando a função DateFormate():  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis12.png)
+  - 3º Ajuste a ação do **Search** para buscar por CEP e Logradouro:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/TelaMeusImoveis13.png)
+- Criando a Ação **DELETE**:
+  - 1º Crie uma ClientAction (no módulo ARR_WEB) vazia inicialmente.
+  - 2º Crie a ServerAction no módulo ARR_Server:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete01.png)
+  - 3º Na aba **Data**, arraste a ação de Delete da tabela Immobile para a ServerAction, adicionando o parâmetro ID.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete02.png)
+  - 4º Configure o Output do CRUD:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete03.png)
+  - 5º Crie o fluxo de exceção (AllExceptions):  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Server/Immobile_Delete05.png)
+  - 6º No módulo ARR_WEB, configure o fluxo que chama a ServerAction e exibe as mensagens de sucesso ou erro:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete01.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete02.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete03.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Meus%20Imoveis/Client/Immobile_Delete04.png)
 
 ## CRIANDO TELA DE AVALIAÇÕES
 
-* **1º** Para inicar organizamos a Tela de Avaliação com um **List** para ficar ajustado usamos
-  * No Main Content > List > Container > Content\CardsSectioned
+- **1º** Organize a Tela de Avaliação utilizando um componente **List** (Main Content > List > Container > Content\CardsSectioned).  
   ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel01.png)
-
-* **2º** Iremos mostrar os Imóveis disponiveis para avaliar, para isso vamos criar um Aggregated para essa tela em especifico.
-  * 1. Fazemos uma relação com a tabela **Immobile** com a **UserXImmobile**
-    * Será a tabela usada para relacionar o usuário com os imoveis que ele já morou e com o **join(With or Whithout)**.
-    * Ou seja trará os dados da *Immobile* mesmo se não haver dados relacionados a *UserxImmobile*
-
-  * 2. Fazemos uma relação com a tabela **Immobile** com a **TypeImmobile**
-    * Neste caso a ligação é **join(Only Whith**) trará de qualquer forma porque não há como cadatsrar um imóvel sem o seu tipo.
-
-  * 3. Fazemos uma relação com **Immobile** com a **Rating**
-    * Para trazer as informações das avaliações, agrupar e contar pelas mesmas.
-    * Usamos o **join(With or Whithout**) também.
-
-  * 4. Realizmos os agrupamentos de informação e a contagem por Id do (Rating).
-    * **Grup By** :
-      * Immobile.Id
-      * Immobile.Street
-      * Immobile.Street_Number
-      * TypeImmobile.Label
-      * Immobile.AccessKey
-    * **Count** :
-      * Rating.Id
-
+- **2º** Crie um Aggregate específico para esta tela:
+  - Relacione a tabela **Immobile** com **UserXImmobile** (para trazer os imóveis em que o usuário já morou).
+  - Relacione **Immobile** com **TypeImmobile** (usando join Only With).
+  - Relacione **Immobile** com **Rating** (usando join With or Without).
+  - Agrupe as informações e conte as avaliações:
+    - Group by: Immobile.Id, Immobile.Street, Immobile.Street_Number, TypeImmobile.Label, Immobile.AccessKey  
+    - Count: Rating.Id  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel03.png)
-
-* **3º**Agora vamos adicionar o nosso **Aggregat** ao nosso **Source**
+- **3º** Adicione o Aggregate ao Source:
   ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel04.png)
-  * 1. Após adicionamos nosso Source atraves das nossas **Expressions** de acordo com retorno de cada informação como na imagem abaixo.
-  * 2. Também estilizamos um pouco mais nosso **Container** dando um espaçamento de margens e centralização do conteudo.
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel05.png)
-  * 3. Vamos Criar um *Group By* no do *TypeImmobile.Id* para que quando a informação daquele lista for Casa apareça um icone de casa e se for apartamento irá aparecer apartamento.
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel06.png)
-  * 4. Agora vamos criar um **If** para mostrar o icone de acordo com o **TypeImmobile**
-  ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel07.png)
-
-* **4º** Vamos criar um scroll infinito que ao rolar as avaliações el sempre vai carregando mais a cada vez que eu rolar para baixo enquanto tiver imoveis.
-  * 1. Ao selecionar o component **List** ele por padrão possui os campos de tipos de **Envents** selecione o Event **On Scroll Ending** é após selecione a opção **New Infinite Scroll Cliente Action**
-    * Será criado automaticamente uma **Cliente Action** de Scroll
+  - Atualize as Expressions e estilize o Container:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel05.png)
+  - Crie um Group By em **TypeImmobile.Id** para exibir ícones conforme o tipo de imóvel:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel06.png)
+  - Crie um IF para exibir o ícone de acordo com o **TypeImmobile**:  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel07.png)
+- **4º** Implemente o scroll infinito para carregar mais registros conforme o usuário rola:
+  - Configure o evento **On Scroll Ending** do componente List com uma Client Action "New Infinite Scroll Client Action".  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel08.png)  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel09.png)
-    * Ele criou uma ação **ScrollEnding** aonde ele está esperando um **número** para incrementar a partir da variável **Incrementrecords** que é se você vai mostrar 5 agora traga mais 2, 3 ... e também criou uma **Variavel Local** -> **MaxRecords** a primeira vez que abrir a tela mostrará a partir de quantos na tela
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel10.png)
-    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel11.png)
+  - A Client Action "ScrollEnding" utiliza uma variável local **MaxRecords** para definir quantos registros serão exibidos inicialmente.  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel10.png)  
+    ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel11.png)  
     ![Tela de Login](./Assets/Parte%203/img/Tela%20Avaliações/Avaliar_Imovel12.png)
+
+-----------------------------------
 
 ## Documentação da 4ª Parte
 
-## Pop-up de Avaliação e Tela Minhas Avaliações, Imóveis que já Morei e Ajustes Gerais
+- Pop-up de Avaliação, Tela Minhas Avaliações, Imóveis que já morei e Ajustes Gerais:
+  - Ajustes no menu
+  - Modal de avaliação
+  - Persistência de dados
+  - Tela Minhas Avaliações
+  - Tela Imóveis que já morei
+  - Ajustes gerais
 
-- Ajustes no menu
-- Modal de avaliação
-- Persistência de dados
-- Tela Minhas Avaliações
-- Tela Imóveis que já morei
-- Ajustes gerais
+### Criando Modal de Avaliação
 
-## Criando Modal de Avaliação
-
-![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao01.png)
-
-- **1º** Iniciamos o **Modulo ARR_SERVECE** Onde será criado a **Server Action: Rating_CreateOrUpdate**
-
-  - Será o fluxo de persistência dos dados do nosso **Modal Avaliação**
-  - Lembrando que essa **Server Action: Rating_CreateOrUpdate** deve estar como **Public**
-    - Para que o modulo **ARR_WEB** o receba
-  - O mesmo irá consumir a tabela **Rating**.
-  - Foi criado uma pasta na Aba **Logic > Rating > Rating_CreateOrUpdate** Onde é a nossa server action de persistência.
-  - *Fluxo* bem parecido com anterior:
-    - 1º O fluxo inicia > Após uma condição *If(É um novo record?)*
-    - 2º Se for um novo record, ele irá armazenar esse registro no nosso **CRUD(CreatingRating)**
-      - Como **Source** receberá nossa tabela **Rating**
-      - Passaremos Nosso **Output** atraves do **Asign** com:
-        - **Output.Succes** (True)
-        - **Output.Message** ("Avaliação criada com sucesso")
-        - **Output.Id** (CreateRating.Id) -> O Id de saida do **CreateRating**
-    - 3º Se não for um novo record, ele irá atualizar o registro no nosso **CRUD(UpdateRating)**
-      - Como **Source** receberá nossa tabela **Rating**
-      - Passaremos Nosso **Output** atraves do **Asign** com:
-        - **Output.Succes** (True)
-        - **Output.Message** ("Avaliação atualizada com sucesso")
-        - **Output.Id** (Rating.Id) -> O Id da tabela Rating do nosso **Source**
-    - 4º Ambos encerram aqui se der Sucesso em criar ou atualizar
-    - 5º Criando o fluxo de Exceção **AllExceptions**
-      - 1º Se ocorrer um erro ou situação que não cobre o fluxo anterior, ele irá executar o nosso **AllExceptions**
-      - 2º O mesmo irá passar o erro para o nosso **Output**:
-        - **Output.Succes** (False)
-        - **Output.Message** (AllExceptions.ExceptionMessage) -> Vai receber a propria ação de Erro, tornando dinamico.
-        - Fim.
-
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao02.png)
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao03.png)
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao04.png)
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao05.png)
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao06.png)
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao07.png)
-    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao08.png)
+- Exibição do modal:  
+  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao01.png)
+- **1º** No módulo ARR_SERVICES, crie a ServerAction **Rating_CreateOrUpdate**:
+  - Fluxo:
+    - Se for um novo registro, utilize o CRUD "CreatingRating" e, via Assign, defina:
+      - Output.Succes = True  
+      - Output.Message = "Avaliação criada com sucesso"  
+      - Output.Id = CreateRating.Id
+    - Caso contrário, utilize o CRUD "UpdateRating" e defina:
+      - Output.Succes = True  
+      - Output.Message = "Avaliação atualizada com sucesso"  
+      - Output.Id = Rating.Id
+    - Ambos os fluxos se encerram com sucesso.
+    - Em caso de exceção, via AllExceptions, defina:
+      - Output.Succes = False  
+      - Output.Message = AllExceptions.ExceptionMessage  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao02.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao03.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao04.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao05.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao06.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao07.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao08.png)  
     ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/Server/ModalAvaliacao09.png)
+- **2º** No módulo ARR_WEB, crie o Pop-up (Modal) de Avaliação:
+  - Adicione um componente para o popup e uma variável local **ShowPopupRating** (Boolean, default False).  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao10.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao11.png)
+  - Atribua a variável ao Popup.  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao12.png)
+  - Crie uma ClientAction (ex: **ShowPopupRating**) para inverter o valor da variável (para abrir/fechar o popup).  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao13.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao14.png)
+  - Crie uma variável local para armazenar a tabela **Rating** a ser usada no formulário do popup.  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao15.png)
+  - Ajuste a estrutura do popup (título, subtítulo, campos do formulário) conforme o mockup.  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao16.png)
+- Ajustes adicionais:
+  - 1º Troque o input de checkbox por um **Radio group** para as recomendações.  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao17.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao18.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao19.png)
+  - 2º Altere o campo "Observação" para um **textArea** e defina o Label como "None".  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao20.png)
+  - 3º Configure o Título e descrição do popup para serem dinâmicos, utilizando variáveis locais (por exemplo, "TypeImmobile" e "ImmobileAddress") que são atribuídas na ação **ShowPopupRating**.  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao21.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao22.png)
+  - 4º Capture o ID da avaliação ao clicar, utilizando a variável local Rating.  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao24.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao25.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao23.png)
+  - 5º Para persistir os dados do popup, crie a ClientAction **SaveOnClick** que:
+    - Chama a ServerAction **Rating_CreateOrUpdate**.
+    - Utiliza um IF para verificar se o Output indica sucesso ou erro e exibe a mensagem correspondente.
+    - Se for sucesso, limpe as variáveis locais e feche o popup (atribuindo ShowPopupRating = False).  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao26.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao27.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao28.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao29.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao30.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao31.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao32.png)
+  - 6º Em **Rating_CreateOrUpdate** (módulo Services), configure os campos **CreatedAt** (CurrDateTime()) e **CreatedBy** (GetUserId()).  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao33.png)
+    - Atualize as dependências no módulo Web.  
+      ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao34.png)
+  - 7º Crie a tela "MyRating" para listar as avaliações do usuário:
+    - Utilize a tabela Immobile com join na tabela **Rating**.
+    - Adicione um filtro para que somente as avaliações do usuário logado sejam exibidas:
 
-- **2º** Criando o Pop-up(Modal) no **Modulo ARR_WEB**
-  *1º* Add Componente a tela de Avaliação de Imóvel
-  *2º* Esse componente espera uma **váriavel local** para validar a hora que **Abre** e **Fecha**
-  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao10.png)
-  *3º* Add a váriavel local **ShowPopupRating** que está setada como Bollean e Default(false), pois queremos que ao entrar nessa página a mesma esteja desativada, somente abrirá quando acionarmos.
-  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao11.png)
-  *4º* Atribuirmos a varivel local ao Popup, dessa forma agora o mesmo já recebe a variavel e podemos então criar o fluxo de **ClientAction** para abrir e fechar.
-  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao12.png)
-  *5º* Criando o **ClientAction** para abrir e fechar o popup, para fazer esse passo lembra que colocamos a variável como padrão (False), ou seja será ativado a partir do inverso desse default.
-  - Vamos criar o **ClientAction** de **OnClick** no Container de **Card de Avaliação**, pois como está dinamico uma vez que eu aplique no container cada card chamará essa ação.
-  - Então a ativação será atraves de um click no Card dos Imoveis, dessa forma no componente a opções de evento onde vamos adicionar o **O tipo de evento(on click)** e o **Handler(ShowPopupRating)** no caso que recebe a nossa variável local.
-  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao13.png)
-  - A ação criada **ShowPopupRating**, que a lógica será um **not** + variavel local
-  - O que explicamos que a variavel esta como default False ou seja o (not) irá realizar o inverso dela que será (True)
-  ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao14.png)
-  *6º* Vamos implementar agora o nosso **ModalAvaliacao(Popup)** na tela
-    - Criamos uma váriavel local para receber nossa tabela **Rating** que será usada no **Formulário** após arrastamos para nosso **Widget Tree** para o formulário dentro do popup, que será as informações que vamos trabalhar.
-   ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao15.png)
-    - Ajustamos nossa estrutura onde **Título e Subtitulo** recebe uma expression que depois vamos colocar para que sempre que for um apartamento ou caso mude e também o icone que vira depois.
-    - Ajustamos os campos do formulário, para que fique o de acordo com nosso mockup
-    - Criamos os botões de **Cancelar** que recebe a ação **ShowRating** para fechar o popup, que é a negativa (not) da variavel local default (False) ou seja se estiver fechado abrirá se estiver aberto fechará e o botão **Save** ainda sem fluxo.
-   ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao16.png)
-- Uma vez que criamos o form do Modal até aqui, vamos realizar alguns ajustes para que a tela fique mais fluida.
-	- 1º - Vamos trocar o input de checkbox das recomendações para um "Radio group" que nos dará a opção de sim ou não.
-	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao17.png)
-	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao18.png)
-	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao19.png)
-	- 2º - Vamos alterar o campo de "Observação" que está com Input, porém o mais adequado é um "textArea".
-		- Lembrando que sempre que trocar um input ou checkbox ocorrerá um erro com Label, pois sempre vem vinculado ao input, desta maneira temos que altera-lo também, em alguns campos como textarea é onde usamos radiogroup não são necessários o vinculo neste caso então podemos colocar o Label como "None".
-	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao20.png)
-	- 3º - Alterando o Título e descrição do popup para retornar se é casa ou apartamento e o endereço, de forma dinâmica antes de persistir nossos dados.
-		- Antes colocamos essas duas expressions como vazia com um dafault de valor padrão
-	![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao21.png)
-	- Para deixar dinâmico vamos ter que criar duas variáveis locais "TypeImmobile" e "ImmobileAddress" e atribui-las a nossa ação "ShowPopupRating" através do Asign,
-   	essa função é usada para que quando clicarmos em um card ela abrirá com formulário de avaliação com algumas informações setadas.
-		- Ambas as variáveis locais devem ser do tipo texto 
-		![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao22.png)
-		- Como vemos na figura abaixo estamos preenchendo o Asign com 4 tipo de informações.
-			- 1º - recebemos o parâmetro de entrada "ShowPopupRating" que abrirá o popup toda vez que for clicada o mesmo se iniciara com valor
-     			False e a condição será "not ShowPopupRating".
-			- 2º - Atribuímos nossa variável local "TypeImmobile" que é o título do nosso popup que trará se é casa ou apartamento a lógica foi:
-			```Js
-			If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
-			```
-			- 3º  - Atribuímos nossa variável local "ImmobileAddress" que é a descrição do nosso popup que trará a rua e o número a lógica do imóvel foi:
-```Js
-If(GetImmobiles.List.Current.TypeImmobileId = Entities.TypeImmobile.Casa, "Casa", "Apartamento")
-```
-		
-- 4º - Pegaremos nossa variável local Rating selecionaremos o nosso ID e receberemos de valor o ID atual que esta sendo clicado.
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao24.png)
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao25.png)
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao23.png)
-	- 4º - Persistindo os dados do "Popup" 
-		- Vamos agora criar a lógica para persistir os dados ao clicar no botão "Salvar", através da Client Action "SaveOnClick" que já atribuímos ao botão
-    		"Salvar" porém não havíamos criado a lógica.
-			- 1º - Vamos inserir a Server Action "Rating_CreateOrUpdate" que criamos anteriormente no modulo server, uma vez que clicar no botão salvar
-     			do nosso popup avaliações ele ira chamar a server action.
-			- 2º - Colocamos um IF que validara SE a persistência de dados foi sucesso ou não.
-				- SE **sim** ele retornara uma mensagem de **Sucesso** do nosso retorno da estrutura "Outupt.Success" que atribuímos a server action
-					- Após a persistência ter sido sucesso chamamos um Asign para limpar nossas variáveis locais que atribuímos para pré-carregar
-       					as informações do título, descrição e ID do nosso popup
-					- Uma vez limpo chamamos outro Asign "ClosePopup" que ira chamar o parametro de entrada "ShowPopupRating" passando valor False
-					- E finalizamos com END
-				- SE **não** ele ele retornara uma mensagem de **Erro** do nosso retorno da estrutura "Outupt.Success" que atribuímos a server action
-					- Apenas atribuímos um Asign vazio para deixar a estrutura mais visualmente agradável, não é necessária
-					- E finalizamos com END
-				- Segue abaixo cada parte da lógica acima: necessário 
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao26.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao27.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao28.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao29.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao30.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao31.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao32.png)
-	- 5º - Vamos atribuir ao criar um novo dado no "Reating" o nosso Created At e Created By.
-		- Para isso temos que ir para o Modulo de **SERVICES** pois e nele que iremos atribuir os mesmos.
-		- Vamos ir no nosso fluxo da Server Action "Reting_CreateOrUpdate" no Source.
-			- Onde está sendo atribuído a tabela **Rating** vamos atribuir campo por campo para configurar os campos "Created At" e "Created By"
-		 ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao33.png)
-		- Atribuindo funções para Created At [CurrDateTime()] e Created By[GetUserId()]
-			- Essa alteração no modulo Services agora após salvar, iremos para o modulo Web atualizar as dependências para que reflita.
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao34.png)
-		- Criando a tela "MyRating" onde após confirmar o Popup da anterior ira persistir e irá aparecer para a pessoa suas avaliações nessa tela.
-			- 1º - Após criar a screen, puxamos da **Aba Data**, a tabela Immobile 
-				- Com ela já veio a relação entre Immobile, TypeImmobile, User
-			- 2º - Criamos um Join com a tabela **Rating** pois é nela que está as nossas avaliações.
-				- Realizamos o **join** com a ligação (**Only with**) neste caso é necessário porque se não iria trazer todas os registros tendo ou não avaliações e queremos neste caso só trazer os dados caso contenha registros.
-				- Criamos um filtro para resolver a questão de visibilidade ou seja o usuário logado só pode ver suas próprias avaliações, dessa forma criamos um filtro.
-				```JS
-				Rating.CreatedBy = GetUserId()
-				```
-			- 3º - A implementação da lógica foi: 
-				- Vai na tabela de **imóveis** e traga o registro que possui **avaliações** e essas avaliações precisa ser exatamente relacionado ao ID de quem está logado no sistema, o usuário só verá os registros de avaliações dele.
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao35.png)
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao36.png)
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao37.png)
-			
-		- Uma vez que ajustamos a tela de "Minhas Avaliações" vamos organizar a tabela que será composta por:
-			- 1º Endereço: 
-			```JS
-			Street + GetImmobiles.List.Current.Immobile.Street+", "+GetImmobiles.List.Current.Immobile.Street_Number
-			```
-			- 2º CEP : 
-			```JS
-			GetImmobiles.List.Current.Immobile.CEP
-			```
-			- 3º Avaliações: 
-			```JS
-			GetImmobiles.List.Current.TypeExperience.Label
-			```
-			- 4º Recomendações: 
-			```JS
-			If(GetImmobiles.List.Current.Rating.Recommend,"Sim","Não")
-			```
-			- 5º Quando
-			```JS
-			DateTimeToDate(GetImmobiles.List.Current.Immobile.CreatedAt)
-			```
-			![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao38.png)
-		-  Criando o campo "Search" para pesquisar a avaliação.
-			- A pesquisa será pelo **nome da rua** ou **Cep**
-			- 1º - Adicionamos um Input Serach
-			- 2º - Colocamos um placeholder para facilitar o entendimento do usuário.
-			- 3º -  Criamos uma variável local "SearchRating" como text, que será nossa variável que capturará o valor que digitarmos.
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao42.png)
-			- 4º Criamos no Input uma ação On Change: **SearchOnChange**, que será um delimitador de caracteres ou seja só será atualizado o campo de busca SE ao digitar no campo Search for >= 3 ou = 0 caracteres. Após será atualizado a tabela através de um refresh
-				- Ao digitar no Input de pesquisa:
-					- 1º - Iniciará a ação OnChange
-					- 2º - Verificará se 
-				```JS 
-				Length(SearchRatings) >= 3 or Length(SearchRatings) = 0
-				```
-				- 3º - SE for **False** finaliza ou SE for **True** atualiza os dados da tabela
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao40.png)
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao41.png)
-			- 5º Criamos o filtro no Agrregatte: GetImmobile que fará um like no campo Search da **rua** e **cep**
-				![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao39.png)
+      ```js
+      Rating.CreatedBy = GetUserId()
+      ```
+
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao35.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao36.png)  
+    ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao37.png)
+    - Organize as colunas (Endereço, CEP, Avaliações, Recomendações, Data) e formate datas com DateTimeToDate().
+      ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao38.png)
+    - Crie um campo "Search" para buscar avaliações por rua ou CEP:
+      - Crie uma variável local "SearchRating" (Texto).
+      - Configure a ação OnChange (ex: "SearchOnChange") para atualizar a lista se o comprimento do texto for >= 3 ou igual a 0:
+
+        ```js
+        Length(SearchRatings) >= 3 or Length(SearchRatings) = 0
+        ```
+
+      ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao42.png)  
+      ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao40.png)  
+      ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao41.png)
+      - No Aggregate, crie um filtro utilizando LIKE para os campos rua e CEP.  
+        ![Parte 4](./Assets/Parte%204/img/ModalAvaliacao-TelaAvaliarImovel/ModalAvaliacao39.png)
 
 -----------------------------------
 
 ## Documentação da 5ª Parte
 
-## **Nesta Parte:**
-
-- Ajustes no menu
-- Evento de editar (tela minhas avaliações)
-- Tela de Dashboard
-- Como trazer dados de gráficos do módulo service
-- Como manipular dados dos gráfico
-- Adicionando atributo em aggregate
-- Trabalhando com Switch
-- Tela Imóveis que já morei
-- Ajustes gerais
+- **Nesta Parte:**
+  - Ajustes no menu
+  - Evento de editar (tela minhas avaliações)
+  - Tela de Dashboard
+  - Consumo de dados de gráficos do módulo Services
+  - Manipulação dos dados dos gráficos
+  - Adição de atributo em Aggregate
+  - Uso de Switch
+  - Tela Imóveis que já morei
+  - Ajustes gerais
 
 ### Ajustando menu
 
-- Ajustando o menu
-	- Foi configurado com os nomes adequados para entendimento da navegação mais fluida
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao43.png)
+- Configure o menu com nomes padronizados para facilitar a navegação.  
+  ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao43.png)
 
------------------
+-----------------------------------
 
 ### Criando a tela do Dashboard
 
-- A ideia desse dashboard é ter alguns gráficos que nos mostrará algumas métricas importantes.
-	- Também criarmos a lógica desses gráficos no modulo de Services e consumi-los e estiliza-los no módulo Web.
-- 1º - Acessando o Módulo Services, vamos até a aba "Logic" e vamos criar uma pasta para as ações de servidor especificas para o Dashboard como fizemos anteriormente com as demais.
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao44.png)
-- 2º - Vamos criar uma Server Action para cada gráfico 
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao45.png)
-	- Ambas as ações devem ser públicas para que eu possa consumir depois no módulo Web.
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao46.png)
-- 3º - Criando a Server Action do Rating(Avaliações)
-	- I - Arrastar um Aggregate para o fluxo 
-	- II - Adicionamos a tabela Rating que sera nossa principal
-	- III - Criamos um join (Only With) a tabela TypeExperience
-		- Aqui fazemos isso porque a ideia é que seja contado a quantidade de avaliações por tipo, por exemplo 3 avaliações boas, 4 ruins ...
-		- Para isso além do Join é preciso realizar um **Count** na **Rating.ID** para realizar a contagem e agrupar a **TypeExperience.Label** para trazer a contagem por tipo de avaliação.
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao47.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao48.png)
-	- 4º - Agora eu preciso passar esses dados de uma forma que o gráfico entenda, porque não estamos passando esse aggregate direto na tela no módulo Web.
-		- Dessa forma para passar vou precisar de uma estrutura determinada que é o **Datapoint** do gráfico 
-		- Para isso vamos puxar essa dependência dentro do módulo service
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao49.png)
-		- Uma observação a OutSystems trabalha com os modelos de gráficos da **Highcharts** dessa maneira caso tenha algum gráfico lá que possa interessar é provável que possa ser importado para a OutSystems. 
-		- Seleciono a dependência que eu quero e aplico 
-			- Após isso irei inserir 2 **parâmetros de saída**
-				- I -  Será **Output** que é nossa estrutura de retorno das mensagem e sucesso
-				- II - Vamos adicionar o parâmetro de saída, referente ao DataPoint que adicionamos.
-					- 1 -  Para isso temos que primeiro clicar em Add Parâmetro de saída
-					- 2 - Depois clicar na seta do campo **Data Type** selecionar o tipo **List** e só depois rolar para baixo e selecionar **DataPoint**
-					- 3 - Isso deve ser feito porque por padrão o parâmetro de saída vem como somente record só que queremos vários datapoints ou seja uma **Lista de Dados**
-				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao50.png)
-				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao51.png)
-				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao52.png)
-				![Parte 5](./Assets/Parte%205/img/ModalAvaliacao53.png)
-	- 5º - Vamos estruturar agora a lógica do fluxo da Server Action (Ratting)
-		- I - Criamos nosso Aggregate, realizamos os joins e configuramos nossos parâmetros de saída
-		- II - Agora vamos arrastar a **Run Server Action** digitar List -> que retornará a função **ListAppendAll** que permite passar os valores vindo do nosso Aggregate para o nosso DataPoint
-		- III - Uma vez setada o **ListAppendAll** vamos adicionar um Asign que receberá o nosso **Output** caso retorne sucesso e finaliza.
-			- Output.Success = True
-			- Output.Massage = "Dados coletados com sucesso"
-		- IV - Criando a lógica de exceção através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
-			- Output.Success = False
-			- Output.Massage = AllExcepetion.ExcepetionMessage (receberá a mensagem de erro da propria **AllExpections**)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao54.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao55.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao56.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao57.png)
-- 4º - Criando a Server Action do ImmobileRegister
-	- Da mesma forma que criamos a ServerAction anterior vamos crear a **ImmobileRegister** a ideia e obter a quantidade de IDs por Data de criação de Immobile 
-	- I - Vamos adicionar os paremetros de entrada o Output e o Source neste serão o mesmo da anterior.
-	- II - Vamos criar o fluxo:
-		- 1 - Arraste a tabela **Immobile da aba Data** após isso vamos abrir e realizar a seguinte ação:
-			- Count -> Immobile.Id
-			- GroupBy CreatedAt -> Immobile.CreatedAt
-		- 2 - Após isso temos que carregar nosso **DataPoint** para que seja consumido no módulo Web e posterior criar o gráfico, preenchendo os campos através do **ListAppendAll** com:
-			- List -> DataPoint
-			- SourceList -> GetImmobiles.List
-				- Value -> Count
-				- Label -> CreatedAt
-		- 3 -  Uma vez preenchido o ListAppendAll, vamos preencher nosso **Assign**
-			- Output.Succes -> True
-			- Output.Massage -> "Dados coletados com sucesso"
-		- 4 -  Vamos criar a lógica de Exceção que será a mesma da Server Action anterior através do **AllExpections** -> vamos inserir um **Asign** que receberá e finaliza ao final
-			- Output.Success = False
-			- Output.Massage = AllExcepetion.ExcepetionMessage (receberá a mensagem de erro da propria **AllExpections**)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao58.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao59.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao60.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao61.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao62.png)
-- 5º - Vamos para o **Módulo Web** para consumir o que criamos no módulo server.
-	- Sempre após alteração no Server publique após vá para o módulo WEB agora e clique na tomada de conexão que é a atualização de dependência, aplique e salve.
-	- CRIANDO OS GRÁFICOS 
-		- I - Crie uma tela chamada **Dashboard**
-		- II - Vamos acrescentar o título e subtítulo 
-		- III - Vamos a nossa arvore **Widget Tree** e começar a montar a estrutura da página.
-			- 1 - Adiciono um **Card** onde para maior organização e controle dos meus componentes 
-			- 2 - Adiciono um componente de **3 Colunas** onde vou criar os espaços adequados para cada gráfico.
-			- 3 - Em **Column1** arrasto o componente de gráfico **PieCharts**
-			- 4 - Em **Column2** arrasto o componente de gráfico **LineCharts**
-		- IV - Uma vez que adicionei os componentes vou agora para aba de Interface > Elements para criar as **Fatch Datas** que recebera minhas ServerActions dos gráficos que consumimos anteriormente.
-			- 1 - Clique com botão direito em cima da Screen desejada, neste caso a **Dashboard** e selecione a opção **Fetch Data from Other Source**
-			- 2 - Feito isso será criado um fluxo como Action e nela terá um parâmetro de Output.
-			- 3 - Uma vez o fluxo criado, arraste a **ServerAction: Ratting** que criamos para consumir o DataPoint e da mesma forma a ImmobileRegisterGraph
-			- 4 - Após vamos colocar um **Asign** que receberá o nosso DataPoint
-				- Para o **Fetch Data from Other Source: RatingGraph**
-					- DataPointList -> Ratting.DataPoint
-				- Para o **Fetch Data from Other Source: ImmobileRegisterGraph**
-					- DataPointList -> ImmobileRegister.DataPoint
-			- 5 - Preenchendo o Output das duas **Fetch Data from Other Source: RatingGraph** e **ImmobileRegisterGraph****
-				- Uma vez clicado nele deve abrir o **Data Type** selecione a opção **List** e so depois selecione o **DataPoint** dessa forma ele receberá todos os atributos da lista criada anteriormente na Server Actions
-				- Se perceber ela realmente fica exata a construída na **ServerAction**
-			- 6 - Agora que criamos todo o fluxo vamos voltar nos gráficos que atribuimos no laytouts onde cada gráfico vai esperar um valor **DataPointList** 
-				- No gráfico vamos apenas selecionar o que colocamos no **Asign** das nossas **Fetch Data from Other Source** criadas.
-					- Gráfico **PieChart**
-						- DataPointList -> RatingGraph.DataPointList
-					- Gráfico **LineChart**
-						- DataPointList -> ImmobileRegisterGraph.DataPointList
-		Dessa forma criamos os dois gráficos principais da nossa aplicação, segue as imagens passo a passo do que foi explicado acima.
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao64.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao66.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao67.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao76.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao68.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao69.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao70.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao71.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao72.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao73.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao74.png)
-		![Parte 5](./Assets/Parte%205/img/ModalAvaliacao75.png)
--------------
+- O dashboard exibirá gráficos com métricas importantes.
+- 1º No módulo Services, na aba "Logic", crie uma pasta para ações de servidor do Dashboard.  
+  ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao44.png)
+- 2º Crie uma ServerAction para cada gráfico.  
+  ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao45.png)
+  - As ações devem ser públicas.  
+    ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao46.png)
+- 3º Criando a ServerAction do Rating (Avaliações):
+  - I - Arraste um Aggregate e adicione a tabela **Rating**.
+  - II - Crie um join (Only With) com a tabela **TypeExperience**.
+    - Realize um Count em Rating.ID e agrupe por TypeExperience.Label.  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao47.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao48.png)
+  - 4º Passe os dados para uma estrutura compatível com gráficos, utilizando **DataPoint**.
+    - Adicione 2 parâmetros de saída:
+      - Output: estrutura com mensagem e sucesso.
+      - Um parâmetro do tipo List of DataPoint.  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao50.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao51.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao52.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao53.png)
+  - 5º Estruture o fluxo da ServerAction (Rating):
+    - I - Crie o Aggregate com os joins e configure os parâmetros de saída.
+    - II - Utilize a ação ListAppendAll para transferir os dados do Aggregate para o DataPoint.
+    - III - Em um Assign, defina:
+      - Output.Success = True  
+      - Output.Message = "Dados coletados com sucesso"
+    - IV - Configure o fluxo de exceção (AllExceptions):
+      - Output.Success = False  
+      - Output.Message = AllExceptions.ExceptionMessage  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao54.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao55.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao56.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao57.png)
+- 4º Criando a ServerAction do ImmobileRegister:
+  - De forma semelhante à ação de Rating, crie uma ação para contar registros de Immobile por data de criação.
+  - I - Adicione os parâmetros.
+  - II - No fluxo:
+    - Arraste a tabela **Immobile**.
+    - Realize um Count em Immobile.Id e agrupe por Immobile.CreatedAt.
+    - Utilize ListAppendAll para preencher os DataPoints (Value = Count, Label = CreatedAt).
+    - Em um Assign, defina:
+      - Output.Success = True  
+      - Output.Message = "Dados coletados com sucesso"
+    - Configure o fluxo de exceção de forma semelhante.  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao58.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao59.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao60.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao61.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao62.png)
+- 5º No módulo Web, atualize as dependências e crie os gráficos:
+  - Crie uma tela chamada **Dashboard**.
+  - Adicione título e subtítulo.
+  - No Widget Tree, crie um Card com um layout de 3 colunas:
+    - Em Column1, adicione um componente **PieChart**.
+    - Em Column2, adicione um componente **LineChart**.
+  - Na aba Interface > Elements, crie “Fetch Data from Other Source” para os gráficos:
+    - Clique com o botão direito na tela Dashboard e selecione "Fetch Data from Other Source".
+    - No fluxo, arraste as ServerActions para RatingGraph e ImmobileRegisterGraph.
+    - Em um Assign, defina:
+      - Para RatingGraph: DataPointList = RatingGraph.DataPoint
+      - Para ImmobileRegisterGraph: DataPointList = ImmobileRegister.DataPoint
+    - Configure os Outputs de cada Fetch como List of DataPoint.
+    - Nos componentes de gráfico, defina a propriedade DataPointList utilizando os Outputs:
+      - PieChart: RatingGraph.DataPointList
+      - LineChart: ImmobileRegisterGraph.DataPointList  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao64.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao66.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao67.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao76.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao68.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao69.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao70.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao71.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao72.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao73.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao74.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao75.png)
+
+-----------------------------------
+
 ### Criando a tela do "Imóveis que já morei"
 
-- Vamos realizar de diferente a atribuição de um **Atributo** dentro do **Aggregate**
+- Nesta tela, o objetivo é utilizar um atributo calculado no Aggregate.
+  - Configure o Dashboard como tela principal.
+  - Crie uma Screen chamada **ImmobileLived**.
+  - No Aggregate desta Screen:
+    - Adicione a tabela **Immobile** e realize um Join com a tabela **UserXImmobile**.
+    - Exiba os campos: Imóvel, CEP, Endereço + Número.
+    - Adicione um Switch para indicar se o usuário já morou na residência.
+      - Crie um novo atributo (New Attribute) no Aggregate com a fórmula:
 
-1º - Vamos ajustar ja o nosso meu colocando o Dashboard como principal
-2º - Vamos criar um Screen vazia que se chamará **ImmobileLived**
-3º - Umas vez criada e ajustado o menu, vamos criar um **Aggregate** no corpo da **Screen**
-- Na nossa lógica é trazer todo os imóveis e cruzar com os imóveis que criei para verificar se já morei ou não nessa residência.
-	- I - Arrastamos um Aggregate para a tela e vamos adicionar as tabelas necessária
-	- II - Vamos adicionar primeiramente a tabela **Immobile** e realizar um Join com a **UserXImmobile**
-	- III - Na tabela vamos imprimir o (Imóvel, CEP, Endereço + Número) e vamos colocar um **Switch** onde vamos marcar se já moramos ou não.
-		- Essa tabela listará todos os imóveis e poderemos flegar qual moramos e qual não moramos atráves do Switch.
-		- Para isso é necessário criar um atributo para validação que verificará se **CreatedAt <> NullDate()**, ou seja se o registro tem uma data nula ou não.
-		- Caso tenha significa que essa pessoa não morou nesse imóvel, se CreatedAt <> NullDate() então existe um registro, significa que essa pessoa já morou nesse imóvel.
-	- IV - Vamos criar um **ATRIBUTO : Check** no **Aggregate** para realizar essa lógica
-		- No finall do nosso Agrregate a um botão chamado **New Atribute** apenas clique nele é em seguida aparecerá para nomear esse atributo e **Adicionar uma formula** abra o campo de lógico e insira exatamente a  lógica que falamos acima.
-		```JS
-		CreatedAt <> NullDate()
-		```
-	- V - Uma vez criado podemos retornar a nossa Screen e adicionar esse atributo ao nosso **Switch**
-		- Após isso clicamos no componente **Switch** e vamos criar uma **ClientAction** que deve capturar essa informação ao mudar o Switch e inserir essa informação, como True ou False.
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao77.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao78.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao79.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao80.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao81.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao82.png)
+        ```js
+        CreatedAt <> NullDate()
+        ```
 
-4º - Vamos agora ir para o **Módulo de Serviços** onde vamos criar a lógica desse botão e consumi-la na nossa **ClientAction**
-- Essa ação será toda vez que alguém clicar no Switch (SwichOnChange) eu vou chamar a ServerAction para atualizar os dados da tabela, seja para Crear ou Deletar esse novo registro do botão Switch.
-- Para essa lógica vamos criar 3 **Server Action**
-	- **UserXimmobile_CreateOrUpdate** -> responsável por crear ou atualizar esse dado na nossa tabela.
-	- **UserxImmobile_Delete** -> responsável por deletar esse registro de o usuário desflegar o Switch na nossa tabela.
-	- **StatusChange** -> Que irá determinar se ao clicar no Switch se irá registrar o excluir esse dado.
-- I - Vamos criar a **ServerAction: UserXimmobile_CreateOrUpdate**
-	- 1 - Ao ser chamada ela irá verificar SE é um novo registro ou NÃO
-		```JS
-		UserXImmobile.Id = NullIdentifier()
-		```
-	- 2 - Se for **True** irá chamar o nosso **CreateUserxImmobile**
-		- Nesse caso podemos chamar direto a tabela **UserxImmobile** porque como padrão na propria tabela já esta setado o CreatedAt como **CurrDateTime()**
-	- 3 - Após isso chamamos nosso Asign que irá incluir nosso Output
-		- Output.Succes -> True
-		- Output.Massage -> "Dados cadastrado com sucesso"
-		- Output.Id -> CreateUserxImmobile.Id
-	- 4 - SE o IF for **False** irá chamar o nosso **UpdateUserxImmobile**
-		- Aqui também chamamos direto a tabela **UserxImmobile**
-	- 5 - Após isso chamamos nosso Asign que irá incluir nosso Output
-		- Output.Succes -> True
-		- Output.Massage -> "Dados atualizado com sucesso"
-		- Output.Id -> UserXImmobile.Id
-	- 6 - Criando o fluxo de **Allexeptions**
-		- AllExeceptions
-		- Asign:
-			- Output.Success -> False
-			- Output.Massage -> AllExceptions.ExceptionMessage
-			
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao84.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao85.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao87.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao86.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao88.png)
-	
-- II - Vamos criar a **ServerAction: UserxImmobile_Delete**
-	- Para o Delete como parâmetro de entrada precisamos somente do ID da tabela que relaciona os usuários com os imóveis e o nosso Output.
-	- I - Ao ser chamada agregamos o proprio **DeleteUserxImmobile** que vem da tabela **UserxImmobile**
-		- Passamos somente o Id desta tabela para que ele identifique o registro a ser manipulado.
-		- Adicionamos um **Asgin**
-			- Output.Success -> True
-			- Output.Massage -> "Dado deletado com sucesso"
-		- Acrescentamos a mesma lógica de exceção dos anteriores.
-	 ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao89.png)
-	 ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao90.png)
-	 ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao91.png)
-- III - Vamos criar a **StatusChange**
-	- Essa será onde vamos receber as duas Server Actions acima para determinar a ação do botão.
-	- 1 - Para criar esse fluxo vamos criar alguns **parâmetros de entradas** necessários.
-		- Parâmetros de entrada
-			- immobileId -> Immobile Identifier
-			- UserxImmobileId -> UserxImmobileId Identifier
-			- Status -> Boolean
-		- Parâmetro de saída
-			- Output
-	- 2 - Ao clicar no **Switch** será chamado essa ServerAction que vai 
-		- I - Chamará um IF que vai verificar o parâmetro de entrada acima **Status**
-		- II - SE for True chamará a **UserXimmobile_CreateOrUpdate** 
-			- Que vai receber:
-				- Id -> NullIdentifier()
-				- ImmobileId -> GetUserId()
-				- CreatedAt -> CurrDateTime()
-		- III - Chamará um Asign, neste caso vamos consumir a mensagem que já setamos dentro da SercerAction de create e update
-			- Output.Success -> True
-			- UserxImmobile_CreateOrUpdate.Output.Massage
-		- IV - SE for Falase chamará a **UserXimmobile_CreateOrUpdate** 
-			- Que vai receber:
-				- UserXImmobileId -> UserXImmobileId
-		- V - Chamará um Asign, neste caso vamos consumir a mensagem que já setamos dentro da SercerAction de Delete
-			- Output.Success -> True
-			- UserxImmobile_Delete.Output.Massage
-		- VI - Acrescentamos a mesma lógica de **AllExpetions** para tratar as Exceções 
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao92.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao93.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao94.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao95.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao96.png)
-
-5º - Criado as ServerActions vamos para o módulo Web recebe-la
-- Uma vez que recebemos as dependências corretamente, vamos então preencher os campos do componente 
-- I - Variable será o valor do nosso **atributo** que criamos no nosso **Aggregate** anteriormente 
-	```JS
-	GetImmobiles.List.Current.Check
-	```
-- II - On Change será a nossa **ClientAction: SwitchOnChange** que criamos e dentro dela recberá a nossa **ServerActio:  StatusChange** que determina o fluxo e chama as outras duas que criamos no módulo service.
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao97.png)
-- III - Construido o fluxo da nossa  **ClientAction: SwitchOnChange** responsável pelo botão do componente **Swich**
-	- Ao clicar no botão seja **flegando** ou **desflegando** o mesmo chamara a ClienteAction
-		- 1 - Será chamada dentro da ClientAction nossa **ServerAction: StatusChange** que receberá:
-			- ImmobileId -> GetImmobiles.List.Current.Immobile.Id
-			- UserxImmobileId -> GetImmobiles.List.Current.UserxImmobile.Id
-			- Status -> GetImmobiles.List.Current.Check
-		- 2 - Será verificado através de um **IF** 
-			- Se StatusChange.Output.Success for **TRUE** retorna uma mensagem de **Sucesso** que será como valor o Output de retorno da nossa **ServerAction**
-				- Message -> StatusChange.Output.Massage
-				- Type -> Success
-			- Se StatusChange.Output.Success for **False** retorna uma mensagem de **Sucesso** que será como valor o Output de retorno da nossa **ServerAction** também
-				- Message -> StatusChange.Output.Massage
-				- Type -> Error
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao98.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao99.png)
-	![Parte 5](./Assets/Parte%205/img/ModalAvaliacao100.png)
-6º - Criando o Input Search da tabela que será pesquisado por Cep e Endereço.
-- I - Vamos criar uma variável local que vai receber a informação digitada no InputSearch, o nome com **SearchImmobile**
-- II - Em Variable vamos receber essa variável que criamos, agora temos que criar um filtro que ao digitar será buscado por CEP e Endereço e após isso será atualizado a base.
-- III - Vamos clicar primeiro no nosso Agrregate e limitar o Max.Record para 10, isso fará que todo vez que a tela carregar ou fazer uma busca será carregada a tabela de 10 em 10 registros.
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao101.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao102.png)
-![Parte 5](./Assets/Parte%205/img/ModalAvaliacao103.png)
-
-----------------------------
-
+  - Vincule o atributo ao componente Switch.
+- No módulo Services, crie a lógica para o Switch:
+  - Crie 3 ServerActions:
+    - **UserXimmobile_CreateOrUpdate**: para criar ou atualizar o registro.
+    - **UserxImmobile_Delete**: para deletar o registro.
+    - **StatusChange**: para determinar, com base no status, se cria ou deleta o registro.  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao84.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao85.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao87.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao86.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao88.png)
+- No módulo Web, atualize as dependências e configure o Switch:
+  - No componente Switch, defina a variável local para receber o valor do atributo (ex.: `GetImmobiles.List.Current.Check`).
+  - Configure o evento OnChange para chamar a ClientAction (ex.: "SwitchOnChange"), que invoca a ServerAction **StatusChange** com os parâmetros necessários.  
+    ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao97.png)
+  - Na ClientAction "SwitchOnChange", trate o retorno:
+    - Se Output.Success for True, exiba mensagem de Sucesso.
+    - Se não, exiba mensagem de Erro.  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao98.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao99.png)  
+      ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao100.png)
+- Por fim, crie um Input Search para a tabela:
+  - Crie uma variável local "SearchImmobile" (Texto).
+  - No Aggregate, limite o Max.Record para 10 e crie um filtro para buscar por CEP e Endereço.  
+    ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao101.png)  
+    ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao102.png)  
+    ![Parte 5](./Assets/Parte%205/img/ModalAvaliacao103.png)
