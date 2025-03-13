@@ -8,7 +8,7 @@ Aplicação em OutSystems Reactive de Avaliações de Imóveis
 - [2ª Parte - Título da Parte 2](#documentação-da-2ª-parte)
 - [3ª Parte - Título da Parte 3](#documentação-da-3ª-parte)
 - [4ª Parte - Título da Parte 4](#documentação-da-4ª-parte)
-- [5ª Parte - Em criação ...](#documentação-da-5ª-parte)
+- [5ª Parte - Título da Parte 5](#documentação-da-5ª-parte)
 
 ## Readme in English - EN
 
